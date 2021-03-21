@@ -1,0 +1,34 @@
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Tipos Sanguineos</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Cadastro Auxiliar / Tipos Sanguineos</li>
+        </ol>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <button type="button" class="btn btn-success" (click)="openCadastroModal()"> + TIPO SANGUINEO</button>
+            <button type="button" class="btn btn-primary m-2" (click)="loadList()">
+                <i class="fa fa-sync"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>DESCRIÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tiposSanguineo of tiposSanguineos">
+                            <td>{{tiposSanguineo.id}}</td>
+                            <td>{{tiposSanguineo.descricao}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

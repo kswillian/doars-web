@@ -1,0 +1,41 @@
+<main>
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Estados</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Cadastro Auxiliar / Estados</li>
+        </ol>
+    </div>
+
+    <div class="card mb-4">
+
+        <div class="card-header">           
+
+            <button type="button" class="btn btn-primary" (click)="loadList()">
+                <i class="fa fa-sync"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>                            
+                            <th>SIGLA</th>
+                        </tr>
+                    </thead>                    
+                    <tbody>
+                        <tr *ngFor="let estado of estados">
+                            <td>{{estado.id}}</td>
+                            <td>{{estado.nome}}</td>                            
+                            <td>{{estado.sigla}}</td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+
+    </div>
+
+</main>

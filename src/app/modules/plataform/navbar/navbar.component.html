@@ -1,0 +1,33 @@
+<nav class="sb-topnav navbar navbar-expand-lg navbar-dark bg-danger">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#modelLogout">Sair</button>
+    </div>
+
+</nav>
+
+<!-- Modal Logout -->
+<div class="modal fade" id="modelLogout" tabindex="-1" aria-labelledby="modelLogout" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modelLogout">Sair</h5>
+
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()" >Sim, quero sair</button>
+            </div>
+        </div>
+    </div>
+</div>

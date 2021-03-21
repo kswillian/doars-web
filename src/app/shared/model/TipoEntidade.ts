@@ -1,0 +1,4 @@
+enum TipoEntidade {
+    HEMOCENTRO,
+    HOSPITAL
+}

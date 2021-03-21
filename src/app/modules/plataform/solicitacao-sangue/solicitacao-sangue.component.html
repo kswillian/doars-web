@@ -1,0 +1,48 @@
+<main>
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Solicitações</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Solicitações / Sangue</li>
+        </ol>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>
+                            <th>DESCRICAO</th>
+                            <th>TIPO(S) SANGUINEO(S)</th>
+                            <th>N° DOADORES NOTIFICADOS</th>
+                            <th>DATA CADASTRO</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let solicitacao of solicitacoes">
+                            <td>{{solicitacao.id}}</td>
+                            <td>{{solicitacao.entidade.nome}}</td>
+                            <td>{{solicitacao.descricao}}</td>
+                            <td>
+                                <span class="badge bg-danger text-white m-1"
+                                    *ngFor="let tipoSanguineo of solicitacao.tipoSanguineosList">{{tipoSanguineo.descricao}}</span>
+                            </td>
+                            <td>{{solicitacao.doadoresNotificados}}</td>
+                            <td>{{solicitacao.dataRegistro}}</td>
+                            <th>
+                                <a>
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>

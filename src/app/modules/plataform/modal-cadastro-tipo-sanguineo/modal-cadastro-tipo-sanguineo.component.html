@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="container">
+        <div class="modal-header">
+            <h5 class="modal-title">Adicionando tipo sanguineo</h5>            
+        </div>        
+        <div class="modal-body">
+            <form #formCadastroTipoSanguineo="ngForm" (submit)="register()"> <!-- (submit)="register()" -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Descrição <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="descricao">
+                        <div *ngIf="!success">
+                            <div *ngFor="let messageFormat of messagesFormat">
+                                <small id="emailHelp" class="form-text text-danger">{{messageFormat}}</small>
+                            </div>                            
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer">            
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">CANCELAR</button>
+                    <button type="submit" class="btn btn-primary">CADASTRAR</button>
+                </div>
+            </form>
+        </div>        
+    </div>
+</div>

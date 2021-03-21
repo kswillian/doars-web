@@ -1,0 +1,52 @@
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Configurando perfil</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Configurações / Perfil</li>
+        </ol>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Nome <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.nome}}" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputEmail4">Tipo Entidade <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.tipoEntidade}}" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">CNPJ <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.cnpj}}" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Municipio <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.endereco.municipios.nome}}" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail4">Estado <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.endereco.estados.nome}}" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail4">Sigla <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.endereco.estados.sigla}}" disabled>
+                    </div>                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputEmail4">Logradouro <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.endereco.logradouro}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">Número <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{entidade.endereco.numero}}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

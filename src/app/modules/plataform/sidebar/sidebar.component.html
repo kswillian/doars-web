@@ -1,0 +1,90 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark bg-danger" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Painel Geral</div>
+                <a class="nav-link" routerLink="/plataforma/dashboard">
+                    <div class="sb-nav-link-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Indicadores
+                </a>
+                <div class="sb-sidenav-menu-heading">Executando</div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Solicitações
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" routerLink="/plataforma/solicitacao/sangue">Sangue</a>
+                    </nav>
+                </div>
+
+                <div class="sb-sidenav-menu-heading">Administrando</div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEndereco"
+                    aria-expanded="false" aria-controls="collapseEndereco">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Endereço
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseEndereco" aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" routerLink="/plataforma/paises">Paises</a>
+                        <a class="nav-link" routerLink="/plataforma/estados">Estados</a>
+                        <a class="nav-link" routerLink="/plataforma/municipios">Municipios</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCadAuxiliae"
+                    aria-expanded="false" aria-controls="collapseCadAuxiliae">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Cadastro Auxiliar
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseCadAuxiliae" aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" routerLink="/plataforma/tipos-sanguineos">Tipos Sanguineos</a>
+                    </nav>
+                </div>
+
+                <div class="sb-sidenav-menu-heading">Central de Configurações</div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConfiguracao"
+                    aria-expanded="false" aria-controls="collapseConfiguracao">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Configurações
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseConfiguracao" aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" routerLink="/plataforma/entidade">Perfil</a>
+                    </nav>
+                </div>
+
+                <!--
+                    <div class="sb-sidenav-menu-heading">Addons</div>
+                <a class="nav-link" href="charts.html">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Charts
+                </a><a class="nav-link" href="tables.html">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Tables
+                </a>
+                -->
+            </div>
+        </div>
+        <div class="sb-sidenav-footer bg-danger">
+            <div class="small">Logado como:</div>
+            {{entidadeNome}}
+        </div>
+    </nav>
+</div>

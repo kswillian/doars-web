@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
 import { Entidade } from 'src/app/shared/model/Entidade';
 import { SolicitacaoSangue } from 'src/app/shared/model/SolicitacaoSangue';
 import { Utils } from 'src/app/shared/util/Utils';
+import { ModalSolicitacaoSangueComponent } from '../modal-solicitacao-sangue/modal-solicitacao-sangue.component';
 
 @Component({
   selector: 'app-solicitacao-sangue',
@@ -29,6 +31,7 @@ export class SolicitacaoSangueComponent implements OnInit {
   util: Utils = new Utils();
 
   constructor(
+    private modal: NgbModal,
     private entidadeService: EntidadeService,
     private solicitacaoService: SolicitacaoSangueService) { }
 
@@ -41,7 +44,14 @@ export class SolicitacaoSangueComponent implements OnInit {
     let email = this.util.getSubJwt();
     this.entidadeService.getByEmail(email).subscribe(response => {
       this.entidade = response;
-    })
+    });
+  }
+
+  entidadeIsLoad(): boolean{
+    if(this.entidade != null){
+      return true;
+    }
+    return false;    
   }
 
   loadAll() {
@@ -52,7 +62,12 @@ export class SolicitacaoSangueComponent implements OnInit {
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
       });
-    }, 100);
+    }, 200);
+  }
+
+  openViewModal(solicitacaoId: number){
+    let modalView = this.modal.open(ModalSolicitacaoSangueComponent, { size: 'xl' });
+    modalView.componentInstance.solicitacaoId = solicitacaoId;
   }
 
 }

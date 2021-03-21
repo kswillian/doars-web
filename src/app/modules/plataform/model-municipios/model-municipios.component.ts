@@ -1,5 +1,4 @@
 import { Component, OnInit ,Input } from '@angular/core';
-
 import { Municipio } from 'src/app/shared/model/Municipio';
 
 @Component({
@@ -14,8 +13,7 @@ export class ModelMunicipiosComponent  implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {   
-    console.log('iniciou');
+  ngOnInit(): void {       
   }
 
   ngOnDestroy(): void{

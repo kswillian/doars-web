@@ -12,7 +12,7 @@ export class PlataformComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['plataforma/dashboard']);
+    this.router.navigate(['plataforma/solicitacao/sangue']);
   }
 
   ngAfterViewInit(): void {
@@ -33,6 +33,6 @@ export class PlataformComponent implements OnInit, AfterViewInit {
           $("body").toggleClass("sb-sidenav-toggled");
       });
   })(jQuery);
-  }
+}  
 
 }

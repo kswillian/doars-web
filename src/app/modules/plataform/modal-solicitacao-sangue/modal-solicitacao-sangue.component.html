@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="container">
+        <div class="modal-header">
+            <h5 class="modal-title">Solicitação de Sangue</h5>
+            <span class="badge bg-secondary text-white m-1" *ngIf="solicitacaoIsLoad()">{{solicitacao.id}}</span>
+        </div>
+        <div class="modal-body">
+            <div class="text-center text-danger" *ngIf="!solicitacaoIsLoad()">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+
+            <div *ngIf="solicitacaoIsLoad()">
+                <form>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Descrição</label>
+                            <input type="text" class="form-control" value="{{solicitacao.descricao}}" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Tipos Sanguienos</label>
+                            <input type="text" class="form-control" value="{{solicitacao.descricao}}" disabled>
+                        </div>
+                          
+                    </div>
+
+                    <div class="modal-footer">            
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" disabled>CANCELAR</button>
+                        <button type="submit" class="btn btn-primary" disabled>CADASTRAR</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,33 @@
     </div>
 
     <div class="card mb-4" *ngIf="entidadeIsLoad()">
+
+        <div class="card-header">
+            <form>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-success" (click)="openCadastroModal()">
+                            <i class="fa fa-plus"></i> SOLICITAÇÃO
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary mr-1">
+                                <i class="fa fa-sync"></i>
+                            </button>
+                            <input type="text" class="form-control"
+                                aria-label="Input dropdown com botão dropdown segmentado">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-primary mr-l">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

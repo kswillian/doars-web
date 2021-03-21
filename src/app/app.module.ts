@@ -9,11 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { PlataformModule } from './modules/plataform/plataform.module';
 
-/*
-import { Ng2OrderModule } from 'ng2-order-pipe';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-*/
-
 import { LoginComponent } from './components/login/login.component';
 import { PlataformComponent } from './components/plataform/plataform.component';
 import { LoginService } from './components/login/login.service';
@@ -34,7 +29,7 @@ import { SolicitacaoSangueService } from './service/solicitacao-sangue.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     FormsModule,
     NgbModule,
     PlataformModule

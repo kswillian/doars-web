@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
 import { SolicitacaoSangue } from 'src/app/shared/model/SolicitacaoSangue';
 
@@ -14,7 +15,9 @@ export class ModalSolicitacaoSangueComponent implements OnInit {
 
   solicitacao: SolicitacaoSangue;
 
-  constructor(private solicitacaoService: SolicitacaoSangueService) { }
+  constructor(
+    private modal: NgbModal,
+    private solicitacaoService: SolicitacaoSangueService) { }
 
   ngOnInit(): void {
     this.findSolicitacaoById();
@@ -22,6 +25,10 @@ export class ModalSolicitacaoSangueComponent implements OnInit {
 
   ngOnDestroy() {
     this.solicitacaoId = null;
+  }
+
+  close(){
+    this.modal.dismissAll();    
   }
 
   findSolicitacaoById(){

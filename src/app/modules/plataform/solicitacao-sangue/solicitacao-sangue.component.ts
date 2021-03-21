@@ -5,6 +5,7 @@ import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.ser
 import { Entidade } from 'src/app/shared/model/Entidade';
 import { SolicitacaoSangue } from 'src/app/shared/model/SolicitacaoSangue';
 import { Utils } from 'src/app/shared/util/Utils';
+import { ModalCadastroSolicitacaoSangueComponent } from '../modal-cadastro-solicitacao-sangue/modal-cadastro-solicitacao-sangue.component';
 import { ModalSolicitacaoSangueComponent } from '../modal-solicitacao-sangue/modal-solicitacao-sangue.component';
 
 @Component({
@@ -68,6 +69,11 @@ export class SolicitacaoSangueComponent implements OnInit {
   openViewModal(solicitacaoId: number){
     let modalView = this.modal.open(ModalSolicitacaoSangueComponent, { size: 'xl' });
     modalView.componentInstance.solicitacaoId = solicitacaoId;
+  }
+
+  openCadastroModal(){
+    let modalView = this.modal.open(ModalCadastroSolicitacaoSangueComponent, { size: 'xl' });
+    modalView.componentInstance.idEntidade = this.entidade.id;   
   }
 
 }

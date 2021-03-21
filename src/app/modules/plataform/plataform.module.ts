@@ -20,6 +20,7 @@ import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { EntidadeComponent } from './entidade/entidade.component';
 import { SolicitacaoSangueComponent } from './solicitacao-sangue/solicitacao-sangue.component';
 import { ModalSolicitacaoSangueComponent } from './modal-solicitacao-sangue/modal-solicitacao-sangue.component';
+import { ModalCadastroSolicitacaoSangueComponent } from './modal-cadastro-solicitacao-sangue/modal-cadastro-solicitacao-sangue.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ModalSolicitacaoSangueComponent } from './modal-solicitacao-sangue/moda
     ToastGlobalComponent,
     EntidadeComponent,
     SolicitacaoSangueComponent,
-    ModalSolicitacaoSangueComponent
+    ModalSolicitacaoSangueComponent,
+    ModalCadastroSolicitacaoSangueComponent
   ],
   imports: [
     CommonModule,    

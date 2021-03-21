@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="container">
+        <div class="modal-header">
+            <h5 class="modal-title">Solicitação de Sangue</h5>
+            <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
+        </div>
+        <div class="modal-body">
+
+            <div class="text-center text-danger" *ngIf="!tiposSanguineosIsLoad()">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+
+            <div>
+                <div *ngIf="tiposSanguineosIsLoad()">
+                    <form>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Tipo(s) Sanguineo(s) <span class="text-danger">*</span></label> <br />
+                                <div class="form-check form-check-inline" *ngFor="let tipoSanguineo of tiposSanguineos">
+                                    <button                                                                                                                                                  
+                                        [ngClass]="isSelected(tipoSanguineo.id) ? 'btn btn-dark' : 'btn btn-danger' " 
+                                        (click)="addRemoveTipoSanguineo(tipoSanguineo.id)">{{tipoSanguineo.descricao}}</button>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Descrição <span class="text-danger">*</span></label>
+                                <textarea class="form-control" rows="5" id="descricao" name="descricao" [(ngModel)]="descricao"></textarea>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Raio de distancia <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="distancia" name="distancia" [(ngModel)]="distancia">
+                            </div>                            
+                        </div>    
+                        
+                        <div *ngIf="!success">
+                            <div *ngFor="let messageFormat of messagesFormat">
+                                <small id="emailHelp" class="form-text text-danger">{{messageFormat}}</small>
+                            </div>                            
+                        </div>                            
+
+                        <div class="modal-footer">                             
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">CANCELAR</button>
+                            <button type="submit" class="btn btn-primary" (click)="register()">CADASTRAR</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

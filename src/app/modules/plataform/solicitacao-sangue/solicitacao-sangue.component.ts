@@ -17,6 +17,9 @@ export class SolicitacaoSangueComponent implements OnInit {
 
   entidade: Entidade;
   solicitacao: SolicitacaoSangue;
+  tipoSanguineo: string;
+
+  tiposSanguineos: Array<any>;
   solicitacoes: Array<any>;
 
   pageCount: number = 1;
@@ -64,6 +67,93 @@ export class SolicitacaoSangueComponent implements OnInit {
         this.totalElements = new Array(response['totalElements']);
       });
     }, 200);
+  }
+
+  search() {    
+  }
+
+  setPage(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.loadAll();
+  }
+
+  navigateToNextPage(event: any) {
+    event.preventDefault();
+
+    if (!this.isSearch()) {
+      if (this.page < this.lastPage - 1) {
+        this.pageCount += 1;
+        this.page += 1;
+      }
+      this.loadAll();
+    } else {
+      if (this.page < this.lastPage - 1) {
+        this.pageCount += 1;
+        this.page += 1;
+      }
+      this.search();
+    }
+
+  }
+
+  navigateToPreviousPage(event: any) {
+    event.preventDefault();
+
+    if (!this.isSearch()) {
+      if (this.page > this.firstPage) {
+        this.pageCount -= 1;
+        this.page -= 1;
+      }
+      this.loadAll();
+    } else {
+      if (this.page > this.firstPage) {
+        this.pageCount -= 1;
+        this.page -= 1;
+      }
+      this.search();
+    }
+
+  }
+
+  navigateToFirstPage(event: any) {
+    event.preventDefault();
+
+    this.pageCount = 1;
+    this.page = this.firstPage;
+
+    if (!this.isSearch()) {
+      this.loadAll();
+    } else {
+      this.search();
+    }
+
+  }
+
+  navigateToLastPage(event: any) {
+    event.preventDefault();
+
+    this.pageCount = this.lastPage;
+    this.page = this.lastPage - 1;
+
+    if (!this.isSearch()) {
+      this.loadAll();
+    } else {
+      this.search();
+    }
+
+  }
+
+  isSearch(): boolean {
+    if (this.tipoSanguineo) {
+      return true;
+    }
+    return false;
+  }
+
+  clean() {
+    this.page = 0;
+    this.pageCount = 1;
   }
 
   openViewModal(solicitacaoId: number){

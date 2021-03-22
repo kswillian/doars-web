@@ -70,6 +70,7 @@ export class ModalCadastroSolicitacaoSangueComponent implements OnInit {
   register() {
 
     this.solicitacaoSangueForm = new SolicitacaoSangueForm(this.idEntidade, this.tiposSanguineosForm, this.descricao, this.distancia);
+    console.log(this.solicitacaoSangueForm);
     this.solicitacaoSangueService.register(this.solicitacaoSangueForm).subscribe(
       response => {
         this.close();

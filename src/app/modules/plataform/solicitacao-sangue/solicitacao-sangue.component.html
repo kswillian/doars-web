@@ -5,15 +5,9 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Solicitações / Sangue</li>
         </ol>
-    </div>
+    </div>    
 
-    <div class="text-center text-danger" *ngIf="!entidadeIsLoad()">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden"></span>
-        </div>
-    </div>
-
-    <div class="card mb-4" *ngIf="entidadeIsLoad()">
+    <div class="card mb-4">
 
         <div class="card-header">
             <form>
@@ -41,7 +35,13 @@
             </form>
         </div>
 
-        <div class="card-body">
+        <div class="text-center text-danger" *ngIf="!entidadeIsLoad()">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
+
+        <div class="card-body" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -75,6 +75,33 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="container" *ngIf="entidadeIsLoad()">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link" href="#" (click)="navigateToFirstPage($event)"> 1 </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" (click)="navigateToPreviousPage($event)">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link"> {{pageCount}} </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" (click)="navigateToNextPage($event)">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" (click)="navigateToLastPage($event)"> {{lastPage}} </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
         </div>
     </div>
 

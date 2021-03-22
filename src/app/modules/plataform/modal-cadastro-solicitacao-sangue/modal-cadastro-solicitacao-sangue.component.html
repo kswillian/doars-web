@@ -14,6 +14,7 @@
 
             <div>
                 <div *ngIf="tiposSanguineosIsLoad()">
+
                     <form>
 
                         <div class="form-row">
@@ -42,8 +43,8 @@
                         </div>                            
 
                         <div class="modal-footer">                             
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">CANCELAR</button>
-                            <button type="submit" class="btn btn-primary" (click)="register()">CADASTRAR</button>
+                            <button type="button" class="btn btn-secondary" (click)="close()">CANCELAR</button>
+                            <button type="button" class="btn btn-primary" (click)="register()">CADASTRAR</button>
                         </div>
 
                     </form>

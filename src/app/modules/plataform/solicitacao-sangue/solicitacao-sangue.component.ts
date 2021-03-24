@@ -20,11 +20,11 @@ export class SolicitacaoSangueComponent implements OnInit {
   tipoSanguineo: string;
 
   tiposSanguineos: Array<any>;
-  solicitacoes: Array<any>;
+  solicitacoes: Array<any>;  
 
   pageCount: number = 1;
   page: number = 0;
-  size: number = 50;
+  size: number = 25;
 
   firstPage: number = 0;
   lastPage: number;

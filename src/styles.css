@@ -10213,3 +10213,70 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #dad7d7;
 }
+
+.component {
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #333;
+}
+/*******************************/
+.card-listagem-cadastro {
+  min-height: 500px;
+}
+/*******************************/
+.btn-plataforma {    
+  height: 30px;
+  border-radius: 2px;
+  font-family: Open Sans,Arial,sans-serif;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-size: 12px;     
+  box-shadow: none;
+}
+
+.btn-datail {
+  color: #767676
+}
+
+.btn-plataforma-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-plataforma-primary:hover {
+  color: #fff;
+}
+
+.btn-plataforma-success {
+  color: #fff;
+  background-color: #438453;
+  border: 1px solid #438453;
+}
+
+.btn-plataforma-success:hover {
+  color: #fff;
+}
+
+.btn-plataforma-common {
+  color: #222;
+  background-color: #fff;
+  border: 1px solid silver;    
+}
+
+.btn-plataforma-common:hover {
+  color: #222;
+}
+
+.form-control-plataforma {
+  border: 1px solid silver;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #222;
+  font-size: 13px;
+  transition: none;
+  height: 30px;
+  padding: 5px 10px;
+  line-height: 1.5;
+}

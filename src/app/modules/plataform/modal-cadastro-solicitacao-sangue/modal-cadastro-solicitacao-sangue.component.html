@@ -1,9 +1,12 @@
-<div class="container">
-    <div class="container">
+<div class="container component">
+
+    <div>
+
         <div class="modal-header">
             <h5 class="modal-title">Solicitação de Sangue</h5>
             <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
         </div>
+
         <div class="modal-body">
 
             <div class="text-center text-danger" *ngIf="!tiposSanguineosIsLoad()">
@@ -14,9 +17,7 @@
 
             <div>
                 <div *ngIf="tiposSanguineosIsLoad()">
-
                     <form>
-
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label>Tipo(s) Sanguineo(s) <span class="text-danger">*</span></label> <br />
@@ -42,14 +43,16 @@
                             </div>                            
                         </div>                            
 
-                        <div class="modal-footer">                             
-                            <button type="button" class="btn btn-secondary" (click)="close()">CANCELAR</button>
-                            <button type="button" class="btn btn-primary" (click)="register()">CADASTRAR</button>
+                        <div class="modal-footer">                                                         
+                            <button type="button" class="btn btn-plataforma btn-plataforma-primary" (click)="register()">CADASTRAR</button>
+                            <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="close()">CANCELAR</button>
                         </div>
-
                     </form>
                 </div>
             </div>
+
         </div>
+
     </div>
+
 </div>

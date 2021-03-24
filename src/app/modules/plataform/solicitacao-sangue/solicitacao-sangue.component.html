@@ -1,108 +1,124 @@
 <main>
 
-    <div class="container-fluid">
-        <h1 class="mt-4">Solicitações</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Solicitações / Sangue</li>
-        </ol>
-    </div>    
+    <div class="container component">
 
-    <div class="card mb-4">
+        <!---->
+        <div class="container-fluid">
+            <h1 class="mt-4">Solicitações</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Solicitações / Sangue</li>
+            </ol>
+        </div>
 
-        <div class="card-header">
-            <form>
-                <div class="form-row">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-success" (click)="openCadastroModal()">
-                            <i class="fa fa-plus"></i> SOLICITAÇÃO
-                        </button>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <button type="button" class="btn btn-primary mr-1">
-                                <i class="fa fa-sync"></i>
+        <!-- listagem -->
+        <div class="card mb-4 card-listagem-cadastro">
+
+            <div class="card-header">
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-plataforma btn-plataforma-success"
+                                (click)="openCadastroModal()">
+                                <i class="fa fa-plus"></i> SOLICITAÇÃO
                             </button>
-                            <input type="text" class="form-control"
-                                aria-label="Input dropdown com botão dropdown segmentado">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-primary mr-l">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-plataforma btn-plataforma-common"
+                                    (click)="loadAll()">
+                                    <i class="fa fa-sync"></i>
+                                </button>
+                                <input type="text" class="form-control form-control-plataforma"
+                                    aria-label="Input dropdown com botão dropdown segmentado">
+                                <div class="input-group-append">
+
+                                </div>
+                                <button type="button" class="btn btn btn-plataforma btn-plataforma-common">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
+                </form>
+            </div>
+
+            <div class="text-center text-danger m-5" *ngIf="!entidadeIsLoad()">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
                 </div>
-            </form>
-        </div>
-
-        <div class="text-center text-danger" *ngIf="!entidadeIsLoad()">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden"></span>
-            </div>
-        </div>
-
-        <div class="card-body" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>DESCRICAO</th>
-                            <th>TIPO(S) SANGUINEO(S)</th>
-                            <th>N° DOADORES NOTIFICADOS</th>
-                            <th>DATA CADASTRO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let solicitacao of solicitacoes">
-                            <td>{{solicitacao.id}}</td>
-                            <td>{{solicitacao.entidade.nome}}</td>
-                            <td>{{solicitacao.descricao}}</td>
-                            <td>
-                                <span class="badge bg-danger text-white m-1"
-                                    *ngFor="let tipoSanguineo of solicitacao.tipoSanguineosList">{{tipoSanguineo.descricao}}</span>
-                            </td>
-                            <td>{{solicitacao.doadoresNotificados}}</td>
-                            <td>{{solicitacao.dataRegistro}}</td>
-                            <th>
-                                <a (click)="openViewModal(solicitacao.id)">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
-            <div class="container" *ngIf="entidadeIsLoad()">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToFirstPage($event)"> 1 </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToPreviousPage($event)">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link"> {{pageCount}} </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToNextPage($event)">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToLastPage($event)"> {{lastPage}} </a>
-                        </li>
-                    </ul>
-                </nav>
+            <div class="text-center m-5" *ngIf="entidadeIsLoad() && solicitacoes.length == 0">
+                <div>
+                    Ainda não há cadastros de solicitações por aqui
+                </div>
+            </div>
+
+            <div class="card-body" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                                <th>DESCRICAO</th>
+                                <th>TIPO(S) SANGUINEO(S)</th>
+                                <th>N° DOADORES NOTIFICADOS</th>
+                                <th>DATA CADASTRO</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let solicitacao of solicitacoes">
+                                <td>{{solicitacao.id}}</td>
+                                <td>{{solicitacao.entidade.nome}}</td>
+                                <td>{{solicitacao.descricao}}</td>
+                                <td>
+                                    <span class="badge bg-danger text-white m-1"
+                                        *ngFor="let tipoSanguineo of solicitacao.tipoSanguineosList">{{tipoSanguineo.descricao}}</span>
+                                </td>
+                                <td>{{solicitacao.doadoresNotificados}}</td>
+                                <td>{{solicitacao.dataRegistro}}</td>
+                                <th>
+                                    <a (click)="openViewModal(solicitacao.id)">
+                                        <i class="fa fa-eye btn-datail"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
+
+        <!-- paginacao -->
+        <div class="container" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="page-link" href="#" (click)="navigateToFirstPage($event)"> 1 </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" (click)="navigateToPreviousPage($event)">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link"> {{pageCount}} </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" (click)="navigateToNextPage($event)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" (click)="navigateToLastPage($event)"> {{lastPage}} </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
 
 </main>

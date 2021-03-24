@@ -1,40 +1,74 @@
 <main>
 
-    <div class="container-fluid">
-        <h1 class="mt-4">Estados</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Cadastro Auxiliar / Estados</li>
-        </ol>
-    </div>
+    <div class="container component">
 
-    <div class="card mb-4">
-
-        <div class="card-header">           
-
-            <button type="button" class="btn btn-primary" (click)="loadList()">
-                <i class="fa fa-sync"></i>
-            </button>
+        <!---->
+        <div class="container-fluid">
+            <h1 class="mt-4">Estados</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Cadastro Auxiliar / Estados</li>
+            </ol>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>                            
-                            <th>SIGLA</th>
-                        </tr>
-                    </thead>                    
-                    <tbody>
-                        <tr *ngFor="let estado of estados">
-                            <td>{{estado.id}}</td>
-                            <td>{{estado.nome}}</td>                            
-                            <td>{{estado.sigla}}</td>
-                        </tr>                        
-                    </tbody>
-                </table>
+
+        <div class="card mb-4 card-listagem-cadastro">
+
+            <div class="card-header">
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-plataforma btn-plataforma-success" disabled>
+                                <i class="fa fa-plus"></i> ESTADO
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="loadList()">
+                                    <i class="fa fa-sync"></i>
+                                </button>
+                                <input type="text" class="form-control form-control-plataforma" disabled>                                
+                                <button type="button" class="btn btn btn-plataforma btn-plataforma-common">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>    
+
+            <div class="text-center text-danger m-5" *ngIf="estados.length == 0">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+
+            <div class="text-center m-5" *ngIf="estados.length == 0">
+                <div>
+                    Ainda não há cadastros de estados por aqui
+                </div>
+            </div>
+
+            <div class="card-body" *ngIf="estados.length > 0">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>                            
+                                <th>SIGLA</th>
+                            </tr>
+                        </thead>                    
+                        <tbody>
+                            <tr *ngFor="let estado of estados">
+                                <td>{{estado.id}}</td>
+                                <td>{{estado.nome}}</td>                            
+                                <td>{{estado.sigla}}</td>
+                            </tr>                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 

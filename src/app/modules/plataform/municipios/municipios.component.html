@@ -1,91 +1,123 @@
 <main>
-    <div class="container-fluid">
-        <h1 class="mt-4">Municipios</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Cadastro Auxiliar / Municipios</li>
-        </ol>
 
-    </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <div class="container">
+    <div class="container component">
+
+        <!---->
+        <div class="container-fluid">
+            <h1 class="mt-4">Municipios</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Cadastro Auxiliar / Municipios</li>
+            </ol>
+        </div>
+
+        <!-- listagem -->
+        <div class="card mb-4 card-listagem-cadastro">
+
+            <div class="card-header">
                 <form #searchForm="ngForm" (submit)="searchAll()">
-                    <div class="row">
+                    <div class="form-row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cidade, Estado" disabled>
-                        </div>
-                        <div class="col-md-3">
-                            <select [(ngModel)]="estado" class="form-control custom-select" name="estado">
-                                <option selected>Selecione</option>
-                                <option *ngFor="let estado of estados" [value]="estado.sigla">
-                                    ({{estado.sigla}}) {{estado.nome}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary m-1">
-                                <i class="fa fa-search"></i> Buscar
+                            <button type="button" class="btn btn-plataforma btn-plataforma-success" disabled>
+                                <i class="fa fa-plus"></i> MUNICIPIO
                             </button>
-                            <button type="submit" class="btn btn-primary m-1" (click)="search()">
-                                <i class="fa fa-sync"></i> Atualizar
-                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+
+                                <button type="button" class="btn btn-plataforma btn-plataforma-common"
+                                    (click)="search()">
+                                    <i class="fa fa-sync"></i>
+                                </button>
+
+                                <input type="text" class="form-control form-control-plataforma"
+                                    placeholder="Cidade, Estado" disabled>
+
+                                <select [(ngModel)]="estado" class="form-control form-control-plataforma custom-select"
+                                    name="estado">
+                                    <option selected>Selecione</option>
+                                    <option *ngFor="let estado of estados" [value]="estado.sigla">
+                                        ({{estado.sigla}}) {{estado.nome}}
+                                    </option>
+                                </select>
+
+                                <button type="submit" class="btn btn btn-plataforma btn-plataforma-common">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
+
+            <div class="text-center text-danger m-5" *ngIf="municipios.length == 0">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+
+            <div class="text-center m-5" *ngIf="municipios.length == 0">
+                <div>
+                    Ainda não há cadastros de municipios por aqui
+                </div>
+            </div>
+
+            <div class="card-body" *ngIf="municipios.length > 0">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                                <th>ESTADO</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let municipio of municipios">
+                                <td>{{municipio.id}}</td>
+                                <td>{{municipio.nome}}</td>
+                                <td>{{municipio.estado.nome}}</td>
+                                <td>
+                                    <a (click)="openViewModal(municipio.id)">
+                                        <i class="fa fa-eye btn-datail"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>ESTADO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let municipio of municipios">
-                            <td>{{municipio.id}}</td>
-                            <td>{{municipio.nome}}</td>
-                            <td>{{municipio.estado.nome}}</td>
-                            <td>
-                                <a (click)="openViewModal(municipio.id)">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="container">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToFirstPage($event)"> 1 </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToPreviousPage($event)">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link"> {{pageCount}} </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToNextPage($event)">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" (click)="navigateToLastPage($event)"> {{lastPage}} </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-
+        <!-- paginacao -->
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="btn-plataforma btn-plataforma-common" href="#" (click)="navigateToFirstPage($event)">
+                            1 </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="btn-plataforma btn-plataforma-common" href="#"
+                            (click)="navigateToPreviousPage($event)">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="btn-plataforma btn-plataforma-common"> {{pageCount}} </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="btn-plataforma btn-plataforma-common" href="#" (click)="navigateToNextPage($event)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="btn-plataforma btn-plataforma-common" href="#" (click)="navigateToLastPage($event)">
+                            {{lastPage}} </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
     </div>

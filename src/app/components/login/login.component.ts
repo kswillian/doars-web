@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginForm } from 'src/app/shared/model/LoginForm';
@@ -12,7 +12,7 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   constructor(
     private loginService: LoginService,
@@ -25,6 +25,10 @@ export class LoginComponent {
 
   storage: Storage = new Storage();
 
+  ngOnInit(): void {
+    this.storage.removeAccessTokenToLocalStorage();
+  }
+  
   onSubmit(){   
 
     this.loginService.login(this.getFormParams()).subscribe(

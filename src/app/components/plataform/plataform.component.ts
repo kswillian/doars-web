@@ -12,7 +12,7 @@ export class PlataformComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['plataforma/solicitacao/sangue']);
+    this.router.navigate(['plataforma/dashboard']);
   }
 
   ngAfterViewInit(): void {

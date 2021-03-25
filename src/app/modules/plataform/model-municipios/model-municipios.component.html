@@ -1,42 +1,50 @@
-<div class="container">
+<div class="modal-content">
 
-  <div class="container">    
+  <div class="modal-header m-2">
+    <h5 class="modal-title">Municipio</h5>
+    <span class="badge badge-pill bg-dark text-white mt-2 ml-2" *ngIf="municipioIsLoad()">{{municipio.id}}</span>
+    <a class="btn close"><span aria-hidden="true">&times;</span></a>
+  </div>
 
-    <div class="modal-header">
-      <h5 class="modal-title">Municipio</h5>
-      <span class="badge badge-pill bg-dark text-white mt-2 ml-2" *ngIf="municipioIsLoad()">{{municipio.id}}</span>
-      <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
-    </div>
+  <div class="modal-body">
 
-
-    <div class="modal-body">
-
-      <div class="text-center text-danger" *ngIf="!municipioIsLoad()">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden"></span>
-        </div>
+    <div class="text-center text-danger" *ngIf="!municipioIsLoad()">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
     </div>
 
     <div *ngIf="municipioIsLoad()">
       <form>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Nome</label>
-            <input type="text" class="form-control" value="{{municipio.nome}}" disabled>
+            <label>Nome <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-plataforma" value="{{municipio.nome}}" disabled>
           </div>
           <div class="form-group col-md-6">
-            <label>Estado</label>
-            <input type="text" class="form-control" value="{{municipio.estado.nome}}" disabled>
+            <label>Estado <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-plataforma" value="{{municipio.estado.nome}}" disabled>
           </div>
         </div>
         <div class="form-group">
-          <label>Latitude</label>
-          <input type="text" class="form-control" value="{{municipio.latitude}}" disabled>
+          <label>Latitude <span class="text-danger">*</span></label>
+          <input type="text" class="form-control form-control-plataforma" value="{{municipio.latitude}}" disabled>
         </div>
         <div class="form-group">
-          <label>Longitude</label>
-          <input type="text" class="form-control" value="{{municipio.longitude}}" disabled>
+          <label>Longitude <span class="text-danger">*</span></label>
+          <input type="text" class="form-control form-control-plataforma" value="{{municipio.longitude}}" disabled>
         </div>
-      </form>          
+      </form>
+    </div>
+
   </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-plataforma btn-plataforma-primary" disabled>ATUALIZAR</button>
+    <button type="button" class="btn btn-plataforma btn-plataforma-common" disabled>
+      <i class="fa fa-trash"></i> EXCLUIR
+    </button>
+    <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="close()">CANCELAR</button>
+  </div>
+
 </div>

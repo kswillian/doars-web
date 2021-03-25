@@ -66,17 +66,19 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>NOME</th>
                                 <th>ESTADO</th>
+                                <th>SIGLA</th>
+                                <th>CÓDIGO IBGE</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let municipio of municipios">
-                                <td>{{municipio.id}}</td>
                                 <td>{{municipio.nome}}</td>
                                 <td>{{municipio.estado.nome}}</td>
+                                <td>{{municipio.estado.sigla}}</td>
+                                <td>{{municipio.id}}</td>
                                 <td>
                                     <a (click)="openViewModal(municipio.id)">
                                         <i class="fa fa-eye btn-datail"></i>

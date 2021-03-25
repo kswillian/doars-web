@@ -8,6 +8,6 @@ export class SolicitacaoSangue {
     entidade: Entidade;
     tipoSanguineosList: TipoSanguineo[];
     doadoresNotificados: number;
-    dataRegistro: Date;
+    dataRegistro: string;
 
 }

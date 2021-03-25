@@ -52,16 +52,18 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>NOME</th>                            
-                                <th>SIGLA</th>
+                                <th>DESCRICAO</th>
+                                <th>SIGLA</th>                            
+                                <th>CÓDIGO IBGE</th>
+                                <th>PAÍS</th>
                             </tr>
                         </thead>                    
                         <tbody>
                             <tr *ngFor="let estado of estados">
+                                <td>{{estado.nome}}</td>
+                                <td>{{estado.sigla}}</td>                            
                                 <td>{{estado.id}}</td>
-                                <td>{{estado.nome}}</td>                            
-                                <td>{{estado.sigla}}</td>
+                                <td>{{estado.pais.nome}}</td>
                             </tr>                        
                         </tbody>
                     </table>

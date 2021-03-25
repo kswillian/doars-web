@@ -1,29 +1,42 @@
 <div class="container">
-  <div class="container">
+
+  <div class="container">    
+
     <div class="modal-header">
-      <h5 class="modal-title">{{municipioDetails.id}}</h5>
+      <h5 class="modal-title">Municipio</h5>
+      <span class="badge badge-pill bg-dark text-white mt-2 ml-2" *ngIf="municipioIsLoad()">{{municipio.id}}</span>
+      <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
     </div>
+
+
     <div class="modal-body">
+
+      <div class="text-center text-danger" *ngIf="!municipioIsLoad()">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+
+    <div *ngIf="municipioIsLoad()">
       <form>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Nome</label>
-            <input type="text" class="form-control" value="{{municipioDetails.nome}}" disabled>
+            <input type="text" class="form-control" value="{{municipio.nome}}" disabled>
           </div>
           <div class="form-group col-md-6">
             <label>Estado</label>
-            <input type="text" class="form-control" value="{{municipioDetails.estado.nome}}" disabled>
+            <input type="text" class="form-control" value="{{municipio.estado.nome}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label>Latitude</label>
-          <input type="text" class="form-control" value="{{municipioDetails.latitude}}" disabled>
+          <input type="text" class="form-control" value="{{municipio.latitude}}" disabled>
         </div>
         <div class="form-group">
           <label>Longitude</label>
-          <input type="text" class="form-control" value="{{municipioDetails.longitude}}" disabled>
+          <input type="text" class="form-control" value="{{municipio.longitude}}" disabled>
         </div>
-      </form>
-    </div>
+      </form>          
   </div>
 </div>

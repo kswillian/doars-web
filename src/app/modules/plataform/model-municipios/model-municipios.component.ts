@@ -1,4 +1,6 @@
 import { Component, OnInit ,Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MunicipiosService } from 'src/app/service/municipios.service';
 import { Municipio } from 'src/app/shared/model/Municipio';
 
 @Component({
@@ -9,15 +11,38 @@ import { Municipio } from 'src/app/shared/model/Municipio';
 export class ModelMunicipiosComponent  implements OnInit { 
 
   @Input()
-  municipioDetails: Municipio;
+  municipioId: number;
+  municipio: Municipio;
 
-  constructor() { }
+  constructor(
+    private modal: NgbModal,
+    private municipioService: MunicipiosService) { }
 
-  ngOnInit(): void {       
+  ngOnInit(): void {  
+    this.findMunicipioById();     
   }
 
   ngOnDestroy(): void{
-    this.municipioDetails=null;
+    this.municipioId = null;
+  }
+
+  close(){
+    this.modal.dismissAll();    
+  }
+
+  findMunicipioById() {
+    setTimeout(() => {
+      this.municipioService.findById(this.municipioId).subscribe(response => {
+        this.municipio = response;
+      });
+    }, 400);    
+  }
+
+  municipioIsLoad(): boolean{
+    if(this.municipio != null){
+      return true;
+    }
+    return false;    
   }
 
 }

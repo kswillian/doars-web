@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-:root {
+:root {  
+  --plataformaPrimary: #007bff;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -6103,6 +6104,10 @@ a.bg-warning:hover, a.bg-warning:focus,
 button.bg-warning:hover,
 button.bg-warning:focus {
   background-color: #d39e00 !important;
+}
+
+.bg-plataform {
+  background-color: #142c48 !important;
 }
 
 .bg-danger {

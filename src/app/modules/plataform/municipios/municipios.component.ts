@@ -16,7 +16,7 @@ import { Municipio } from 'src/app/shared/model/Municipio';
 export class MunicipiosComponent implements OnInit {
 
   municipio: Municipio;
-  municipios: Array<any>;
+  municipios: Array<any> = [];
   estado: string;
   estados: Estado[] = [];
 
@@ -39,8 +39,8 @@ export class MunicipiosComponent implements OnInit {
     private municipioService: MunicipiosService) { }
 
   ngOnInit(): void {
-    this.loadAll();
     this.getEstados();
+    this.loadAll();    
   }
 
   loadList() {
@@ -48,17 +48,19 @@ export class MunicipiosComponent implements OnInit {
   }
 
   loadAll() {
-    this.municipioService.findPage(this.page, this.size).subscribe(response => {
-      this.municipios = response['content'];      
-      this.lastPage = response['totalPages'];
-      this.totalPages = new Array(response['totalPages']);
-      this.totalElements = new Array(response['totalElements']);
-    });
+    setTimeout(() => {
+      this.municipioService.findPage(this.page, this.size).subscribe(response => {
+        this.municipios = response['content'];      
+        this.lastPage = response['totalPages'];
+        this.totalPages = new Array(response['totalPages']);
+        this.totalElements = new Array(response['totalElements']);
+      });
+    }, 500);    
   }
 
   searchAll() {
     this.clean();
-    if (this.estado) {
+    if (this.estado && this.estado != 'Selecione') {
       this.municipioService.findAllByEstado(this.estado, this.page, this.size).subscribe(response => {
         this.municipios = response['content'];
         this.lastPage = response['totalPages'];
@@ -72,7 +74,7 @@ export class MunicipiosComponent implements OnInit {
 
   search() {
 
-    if (this.estado) {
+    if (this.estado && this.estado != 'Selecione') {
       this.municipioService.findAllByEstado(this.estado, this.page, this.size).subscribe(response => {
         this.municipios = response['content'];
         this.lastPage = response['totalPages'];
@@ -172,23 +174,11 @@ export class MunicipiosComponent implements OnInit {
   clean() {
     this.page = 0;
     this.pageCount = 1;
-  }
+  }  
 
-  findMunicipioById(municipioId: number) {
-    this.municipioService.findById(municipioId).subscribe(response => {
-      this.municipio = response;
-    });
-  }
-
-  openViewModal(municipioId: number) {
-
-    this.findMunicipioById(municipioId);
-
-    setTimeout(() => {
-      let modalView = this.modal.open(ModelMunicipiosComponent, { size: 'xl' });
-      modalView.componentInstance.municipioDetails = this.municipio;
-    }, 500);
-
+  openViewModal(municipioId: number) {  
+    let modalView = this.modal.open(ModelMunicipiosComponent, { size: 'xl' });
+    modalView.componentInstance.municipioId = municipioId;
   }
 
 }

@@ -1,11 +1,13 @@
 <div class="container">
     <div class="container">
+
         <div class="modal-header">
             <h5 class="modal-title">Solicitação de Sangue</h5>
             <span class="badge badge-pill bg-dark text-white mt-2 ml-2"
                 *ngIf="solicitacaoIsLoad()">{{solicitacao.id}}</span>
             <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
         </div>
+        
         <div class="modal-body">
 
             <div class="text-center text-danger" *ngIf="!solicitacaoIsLoad()">

@@ -10274,6 +10274,12 @@ body {
   color: #222;
 }
 
+.btn-plataforma-danger {
+  color: rgb(255, 255, 255);
+  background-color: rgb(219, 48, 48);
+  border: 1px solid silver;    
+}
+
 .form-control-plataforma {
   border: 1px solid silver;
   border-radius: 2px;

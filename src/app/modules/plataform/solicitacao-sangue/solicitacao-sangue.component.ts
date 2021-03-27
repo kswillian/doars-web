@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
+import { TiposSanguineosService } from 'src/app/service/tipos-sanguineos.service';
 import { Entidade } from 'src/app/shared/model/Entidade';
 import { SolicitacaoSangue } from 'src/app/shared/model/SolicitacaoSangue';
+import { TipoSanguineo } from 'src/app/shared/model/TipoSanguineo';
 import { Utils } from 'src/app/shared/util/Utils';
 import { ModalCadastroSolicitacaoSangueComponent } from '../modal-cadastro-solicitacao-sangue/modal-cadastro-solicitacao-sangue.component';
 import { ModalSolicitacaoSangueComponent } from '../modal-solicitacao-sangue/modal-solicitacao-sangue.component';
@@ -19,8 +21,12 @@ export class SolicitacaoSangueComponent implements OnInit {
   solicitacao: SolicitacaoSangue;
   tipoSanguineo: string;
 
-  tiposSanguineos: Array<any>;
-  solicitacoes: Array<any> = [];  
+  searchInput: string = null;
+  tiposSanguineosInput: Array<any> = [];
+
+  solicitacoes: Array<any> = [];
+  tiposSanguineos: Array<any> = [];  
+  tiposSanguineosDescricao: string = "A+,A-,AB+,AB-,B+,B-,O-,O+";
 
   pageCount: number = 1;
   page: number = 0;
@@ -37,39 +43,119 @@ export class SolicitacaoSangueComponent implements OnInit {
   constructor(
     private modal: NgbModal,
     private entidadeService: EntidadeService,
+    private tipoSanguineoService: TiposSanguineosService,
     private solicitacaoService: SolicitacaoSangueService) { }
 
   ngOnInit(): void {
-    this.getEntidade();
+    this.loadEntidade();
+    this.loadTiposSanguineos();
     this.loadAll();
   }
 
-  getEntidade() {
+  loadEntidade() {
     let email = this.util.getSubJwt();
     this.entidadeService.getByEmail(email).subscribe(response => {
       this.entidade = response;
     });
   }
 
-  entidadeIsLoad(): boolean{
-    if(this.entidade != null){
-      return true;
-    }
-    return false;    
+  loadTiposSanguineos() {
+    this.tipoSanguineoService.findAll().subscribe(response => {
+      this.tiposSanguineos = response
+    });
+  }
+  
+  addRemoveTipoSanguineo(tipoSanguineoSelected: TipoSanguineo) {
+    if (!this.isSelected(tipoSanguineoSelected)) {
+      this.tiposSanguineosInput.push(tipoSanguineoSelected);
+      this.search();
+    } else {
+      this.tiposSanguineosInput = this.tiposSanguineosInput.filter(tipoSanguineo => tipoSanguineo != tipoSanguineoSelected);
+      this.search();
+    }    
   }
 
+  isSelected(tipoSanguineoSelected: TipoSanguineo) {
+    for (let i = 0; i < this.tiposSanguineosInput.length; i++) {
+      if (this.tiposSanguineosInput[i] == tipoSanguineoSelected) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  clearTiposSanguineosInput(){
+    this.tiposSanguineosInput = [];
+    this.loadAll();
+  }
+  
   loadAll() {
+
+    this.tiposSanguineosInput = [];
+
     setTimeout(() => {
-      this.solicitacaoService.findPage(this.entidade.id, this.page, this.size).subscribe(response => {
+      this.solicitacaoService.findAll(this.entidade.id, this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
       });
-    }, 200);
+    }, 300);
+  }
+
+  loadAllBySearch(){
+    setTimeout(() => {
+      this.solicitacaoService.findAllBySearch(this.entidade.id, this.searchInput, this.page, this.size).subscribe(response => {
+        this.solicitacoes = response['content'];
+        this.lastPage = response['totalPages'];
+        this.totalPages = new Array(response['totalPages']);
+        this.totalElements = new Array(response['totalElements']);
+      });
+    }, 300);
+  }
+
+  loadAllByTiposSanguineos(){    
+    setTimeout(() => {
+      this.solicitacaoService.findAllByTiposSanguineos(this.entidade.id, this.prepareListId(), this.page, this.size).subscribe(response => {
+        this.solicitacoes = response['content'];
+        this.lastPage = response['totalPages'];
+        this.totalPages = new Array(response['totalPages']);
+        this.totalElements = new Array(response['totalElements']);
+      });
+    }, 300);
+  }
+
+  loadAllByTiposSanguineosAndSearch(){    
+    setTimeout(() => {
+      this.solicitacaoService.findAllByTiposSanguineosAndSearch(this.entidade.id, this.searchInput, this.tiposSanguineosInput.toString(), this.page, this.size).subscribe(response => {
+        this.solicitacoes = response['content'];
+        this.lastPage = response['totalPages'];
+        this.totalPages = new Array(response['totalPages']);
+        this.totalElements = new Array(response['totalElements']);
+      });
+    }, 300);
+  }
+
+  prepareListId(){
+    const listId = [];
+    for(let i = 0; i < this.tiposSanguineosInput.length; i++){
+      listId.push(this.tiposSanguineosInput[i].id);
+    }
+    return listId.toString();
   }
 
   search() {    
+
+    if(this.tiposSanguineosInput.length > 0 && this.searchInput != null && this.searchInput != ""){      
+      this.loadAllByTiposSanguineosAndSearch();
+    }else if(this.tiposSanguineosInput.length > 0){
+      this.loadAllByTiposSanguineos();
+    }else if(this.searchInput != null && this.searchInput != ""){
+      this.loadAllBySearch();
+    }else{
+      this.loadAll();
+    }
+
   }
 
   setPage(i, event: any) {
@@ -151,19 +237,21 @@ export class SolicitacaoSangueComponent implements OnInit {
     return false;
   }
 
-  clean() {
-    this.page = 0;
-    this.pageCount = 1;
+  entidadeIsLoad(): boolean {
+    if (this.entidade != null) {
+      return true;
+    }
+    return false;
   }
 
-  openViewModal(solicitacaoId: number){
+  openViewModal(solicitacaoId: number) {
     let modalView = this.modal.open(ModalSolicitacaoSangueComponent, { size: 'xl' });
     modalView.componentInstance.solicitacaoId = solicitacaoId;
   }
 
-  openCadastroModal(){
+  openCadastroModal() {
     let modalView = this.modal.open(ModalCadastroSolicitacaoSangueComponent, { size: 'xl' });
-    modalView.componentInstance.idEntidade = this.entidade.id;   
+    modalView.componentInstance.idEntidade = this.entidade.id;
   }
 
 }

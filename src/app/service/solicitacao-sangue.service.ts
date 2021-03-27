@@ -18,13 +18,27 @@ export class SolicitacaoSangueService {
     return this.httpClient.post<SolicitacaoSangue>(this.URL_API, solicitacaoSangue);
   }
   
-  findAll(entidadeId: number):  Observable<SolicitacaoSangue[]>{
-    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '?entidadeId=' + entidadeId);    
+  findAll(entidadeId: number, page: number, size: number):  Observable<SolicitacaoSangue[]>{
+    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?page=' + page + '&size=' + size);
   }
 
+  /*
   findPage(entidadeId: number, page: number, size: number):  Observable<SolicitacaoSangue[]>{
-    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '?entidadeId=' + entidadeId + '&page=' + page + '&size=' + size);    
+    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?page=' + page + '&size=' + size);    
   }
+  */
+
+  findAllBySearch(entidadeId: number, search: string, page: number, size: number):  Observable<SolicitacaoSangue[]>{
+    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?search=' + search + '&page=' + page + '&size=' + size);
+  }
+
+  findAllByTiposSanguineos(entidadeId: number, tiposSanguineos: string, page: number, size: number):  Observable<SolicitacaoSangue[]>{
+    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?tiposSanguineos=' + tiposSanguineos + '&page=' + page + '&size=' + size);
+  }
+
+  findAllByTiposSanguineosAndSearch(entidadeId: number, search: string, tiposSanguineos: string, page: number, size: number):  Observable<SolicitacaoSangue[]>{
+    return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?search='+ search + '&&tiposSanguineos=' + tiposSanguineos + '&page=' + page + '&size=' + size);
+  }  
 
   findById(id: number){
     return this.httpClient.get<SolicitacaoSangue>(this.URL_API + '/' + id);  

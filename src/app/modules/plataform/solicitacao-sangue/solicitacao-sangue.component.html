@@ -14,7 +14,7 @@
         <div class="card mb-4 card-listagem-cadastro">
 
             <div class="card-header">
-                <form>
+                <form #formSolicitacaoSangue="ngForm" (submit)="search()">
                     <div class="form-row">
                         <div class="col-md-6">
                             <button type="button" class="btn btn-plataforma btn-plataforma-success"
@@ -28,12 +28,37 @@
                                     (click)="loadAll()">
                                     <i class="fa fa-sync"></i>
                                 </button>
-                                <input type="text" class="form-control form-control-plataforma"
-                                    aria-label="Input dropdown com botão dropdown segmentado">
+                                <input type="text" class="form-control form-control-plataforma" id="searchInput"
+                                    name="searchInput" [(ngModel)]="searchInput" placeholder="Descrição">
 
-                                <button type="button" class="btn btn btn-plataforma btn-plataforma-common">
+                                <button type="button" class="btn btn btn-plataforma btn-plataforma-common"
+                                    (click)="search()">
                                     <i class="fa fa-search"></i>
                                 </button>
+
+                                <div class="btn-group">
+
+                                    <button class="btn btn btn-plataforma btn-plataforma-common dropdown-toggle"
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-filter"></i>
+                                    </button>
+
+                                    <ul class="dropdown-menu">
+                                        <div class="card" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Tipos Sanguineos</h5>
+
+                                                <button class="btn badge bg-secondary text-white p-1 ml-1" type="button"
+                                                    [ngClass]="isSelected(tipoSanguineo) ? 'bg-danger' : 'bg-secondary'"
+                                                    *ngFor="let tipoSanguineo of tiposSanguineos"
+                                                    (click)="addRemoveTipoSanguineo(tipoSanguineo)">{{tipoSanguineo.descricao}}
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </ul>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,6 +68,27 @@
             <div class="text-center text-danger m-5" *ngIf="!entidadeIsLoad()">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden"></span>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    Filtro:
+                    <div class="col-11">
+
+                        <button class="btn badge bg-danger text-white ml-1" type="button"
+                            *ngFor="let tipoSanguineo of tiposSanguineosInput"
+                            (click)="addRemoveTipoSanguineo(tipoSanguineo)">{{tipoSanguineo.descricao}}
+                            <a class="fs-6 ml-1"><span aria-hidden="true">&times;</span></a>
+                        </button>
+
+                        <button class="btn badge btn-sm bg-light text-dark" type="button"
+                            *ngIf="tiposSanguineosInput.length == tiposSanguineos.length"
+                            (click)="clearTiposSanguineosInput()">Limpar Filtro
+                            <a class="fs-6 ml-1"><span aria-hidden="true">&times;</span></a>
+                        </button>
+
+                    </div>
                 </div>
             </div>
 

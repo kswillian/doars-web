@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-11"> </div>
+    <div class="col-1">        
+        <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="refresh()">
+            <i class="fa fa-sync"></i>
+        </button>                
+    </div>
+</div>
+
+<div class="container text-white">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-counter bg-primary">
+                <span class="count-numbers">{{entidades}}</span>
+                <span class="count-name">Entidades</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-counter bg-primary">
+                <span class="count-numbers">{{doadores}}</span>
+                <span class="count-name">Doadores</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-counter bg-primary">
+                <span class="count-numbers">{{solicitacoes}}</span>
+                <span class="count-name">Solicitações</span>
+            </div>
+        </div>
+    </div>
+    <p class="m-1 text-secondary">Atualizado em: {{dataAtualizacao}}</p>
+</div>

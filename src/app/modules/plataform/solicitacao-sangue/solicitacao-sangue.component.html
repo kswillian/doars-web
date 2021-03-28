@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="container mt-4">
+            <div class="container mt-4" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
                 <div class="row">
                     Filtro:
                     <div class="col-11">

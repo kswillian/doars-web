@@ -2,32 +2,12 @@
 
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/plataforma" (click)="navigateToMain()">DOARS - Admin</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
-        <button type="button" class="btn text-white bg-plataform" data-bs-toggle="modal"
-            data-bs-target="#modelLogout">Sair</button>
+        
     </div>
 
 </nav>
-
-<!-- Modal Logout -->
-<div class="modal fade" id="modelLogout" tabindex="-1" aria-labelledby="modelLogout" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modelLogout">Logout</h5>
-
-            </div>
-            <div class="modal-body">
-                Você realmente deseja sair da plataforma?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-plataforma btn-plataforma-common" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-plataforma btn-plataforma-primary" data-bs-dismiss="modal" (click)="logout()" >Sim, quero sair</button>
-            </div>
-        </div>
-    </div>
-</div>

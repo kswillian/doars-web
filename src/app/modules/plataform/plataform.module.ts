@@ -22,6 +22,10 @@ import { SolicitacaoSangueComponent } from './solicitacao-sangue/solicitacao-san
 import { ModalSolicitacaoSangueComponent } from './modal-solicitacao-sangue/modal-solicitacao-sangue.component';
 import { ModalCadastroSolicitacaoSangueComponent } from './modal-cadastro-solicitacao-sangue/modal-cadastro-solicitacao-sangue.component';
 import { DoadoresSolicitacaoSangueComponent } from './doadores-solicitacao-sangue/doadores-solicitacao-sangue.component';
+import { CardDashboardGeralComponent } from './card-dashboard-geral/card-dashboard-geral.component';
+import { CardDashboardDoadoresPorTipoSanguineoComponent } from './card-dashboard-doadores-por-tipo-sanguineo/card-dashboard-doadores-por-tipo-sanguineo.component';
+import { CardDashboardSolicitacaoSanguePorTipoSanguineoComponent } from './card-dashboard-solicitacao-sangue-por-tipo-sanguineo/card-dashboard-solicitacao-sangue-por-tipo-sanguineo.component';
+import { ModalSairComponent } from './modal-sair/modal-sair.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { DoadoresSolicitacaoSangueComponent } from './doadores-solicitacao-sangu
     SolicitacaoSangueComponent,
     ModalSolicitacaoSangueComponent,
     ModalCadastroSolicitacaoSangueComponent,
-    DoadoresSolicitacaoSangueComponent
+    DoadoresSolicitacaoSangueComponent,
+    CardDashboardGeralComponent,
+    CardDashboardDoadoresPorTipoSanguineoComponent,
+    CardDashboardSolicitacaoSanguePorTipoSanguineoComponent,
+    ModalSairComponent
   ],
   imports: [
     CommonModule,    

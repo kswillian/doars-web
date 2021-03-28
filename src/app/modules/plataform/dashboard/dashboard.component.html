@@ -10,39 +10,7 @@
             <li class="breadcrumb-item active">Dados Gerais</li>
         </ol>
 
-        <!-- atualiza dados gerais -->
-        <div class="row">
-            <div class="col-11"></div>
-            <div class="col-1">
-                <button type="button" class="btn btn-plataforma btn-plataforma-common">
-                    <i class="fa fa-sync"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- dados gerais -->
-        <div class="container text-white">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-counter bg-primary">
-                        <span class="count-numbers">0</span>
-                        <span class="count-name">Entidades</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-counter bg-danger">
-                        <span class="count-numbers">0</span>
-                        <span class="count-name">Doadores</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-counter bg-success">
-                        <span class="count-numbers">0</span>
-                        <span class="count-name">Solicitações</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <app-card-dashboard-geral></app-card-dashboard-geral>
 
         <ol class="breadcrumb mt-4">
             <li class="breadcrumb-item active">Dados da entidade</li>
@@ -52,57 +20,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card-counter card-counter-list">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-11">
-                                    <h5 class="card-title">Doadores por tipo sanguineo</h5>
-                                </div>
-                                <div class="col-1">
-                                    <button type="button" class="btn btn-plataforma btn-plataforma-common">
-                                        <i class="fa fa-sync"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">A+</div>
-                                    </div>
-                                    <span class="badge bg-danger text-white rounded-pill p-2">14</span>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+                    <app-card-dashboard-doadores-por-tipo-sanguineo></app-card-dashboard-doadores-por-tipo-sanguineo>
+                </div>                
                 <div class="col-md-6">
-                    <div class="card-counter card-counter-list">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-11">
-                                    <h5 class="card-title">Solicitações por tipo sanguineo</h5>
-                                </div>
-                                <div class="col-1">
-                                    <button type="button" class="btn btn-plataforma btn-plataforma-common">
-                                        <i class="fa fa-sync"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">A+</div>
-                                    </div>
-                                    <span class="badge bg-danger text-white rounded-pill p-2">14</span>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+                    <app-card-dashboard-solicitacao-sangue-por-tipo-sanguineo entidadeId="{{entidade.id}}"></app-card-dashboard-solicitacao-sangue-por-tipo-sanguineo>
+                </div>                
             </div>
         </div>
 

@@ -1,0 +1,35 @@
+<div class="card-counter card-counter-list">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-11">
+                <h5 class="card-title">Solicitações por tipo sanguineo</h5>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="refresh()">
+                    <i class="fa fa-sync"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center m-5" *ngIf="!dataIsLoad()">
+        <div>
+            Ainda não há dados de indicadores
+        </div>
+    </div>
+
+    <div class="card-body">        
+        <ol class="list-group list-group-numbered" *ngIf="dataIsLoad()">
+            <li class="list-group-item d-flex justify-content-between align-items-start"
+                *ngFor="let solicitacaoDoacao of solicitacoesDoacao">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{solicitacaoDoacao.tipoSanguineo.descricao}}</div>
+                </div>
+                <span
+                    class="badge bg-primary text-white rounded-pill p-2">{{solicitacaoDoacao.numeroSolicitacoes}}</span>
+            </li>
+        </ol>
+    </div>
+    <p class="m-1 text-secondary" *ngIf="dataIsLoad()">Atualizado em:
+        {{dashboardSolicitacaoDoacaoTipoSanguineo.dataAtualizacao}}</p>
+</div>

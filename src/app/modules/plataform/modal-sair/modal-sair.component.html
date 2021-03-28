@@ -1,0 +1,19 @@
+<div class="modal-content">
+
+    <div class="modal-header m-2">
+        <h5 class="modal-title" id="modelLogout">Logout</h5>
+        <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
+    </div>
+
+    <div class="modal-body">
+        <p>Você realmente deseja sair da plataforma?</p>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-plataforma btn-plataforma-primary" (click)="logout()">
+            <i class="fa fa-sign-out-alt"></i> SIM, SAIR
+        </button>
+        <button type="button" class="btn btn-plataforma btn-plataforma-common" (click)="close()">CANCELAR</button>
+    </div>
+
+</div>

@@ -21,6 +21,7 @@ import { EntidadeComponent } from './entidade/entidade.component';
 import { SolicitacaoSangueComponent } from './solicitacao-sangue/solicitacao-sangue.component';
 import { ModalSolicitacaoSangueComponent } from './modal-solicitacao-sangue/modal-solicitacao-sangue.component';
 import { ModalCadastroSolicitacaoSangueComponent } from './modal-cadastro-solicitacao-sangue/modal-cadastro-solicitacao-sangue.component';
+import { DoadoresSolicitacaoSangueComponent } from './doadores-solicitacao-sangue/doadores-solicitacao-sangue.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ModalCadastroSolicitacaoSangueComponent } from './modal-cadastro-solici
     EntidadeComponent,
     SolicitacaoSangueComponent,
     ModalSolicitacaoSangueComponent,
-    ModalCadastroSolicitacaoSangueComponent
+    ModalCadastroSolicitacaoSangueComponent,
+    DoadoresSolicitacaoSangueComponent
   ],
   imports: [
     CommonModule,    

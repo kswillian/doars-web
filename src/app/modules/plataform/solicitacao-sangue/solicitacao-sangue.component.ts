@@ -127,7 +127,7 @@ export class SolicitacaoSangueComponent implements OnInit {
 
   loadAllByTiposSanguineosAndSearch(){    
     setTimeout(() => {
-      this.solicitacaoService.findAllByTiposSanguineosAndSearch(this.entidade.id, this.searchInput, this.tiposSanguineosInput.toString(), this.page, this.size).subscribe(response => {
+      this.solicitacaoService.findAllByTiposSanguineosAndSearch(this.entidade.id, this.searchInput, this.prepareListId(), this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Doador } from '../shared/model/Doador';
 import { SolicitacaoSangue } from '../shared/model/SolicitacaoSangue';
 import { SolicitacaoSangueForm } from '../shared/model/SolicitacaoSangueForm';
 
@@ -20,6 +21,10 @@ export class SolicitacaoSangueService {
   
   findAll(entidadeId: number, page: number, size: number):  Observable<SolicitacaoSangue[]>{
     return this.httpClient.get<SolicitacaoSangue[]>(this.URL_API + '/entidade/' + entidadeId + '?page=' + page + '&size=' + size);
+  }
+
+  findAllDoadoresBySolicitacao(solicitacaoId: number):  Observable<Doador[]>{
+    return this.httpClient.get<Doador[]>(this.URL_API + '/' + solicitacaoId + '/doadores');
   }
 
   /*

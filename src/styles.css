@@ -10229,6 +10229,11 @@ body {
 .card-listagem-cadastro {
   min-height: 500px;
 }
+
+.card-listagem-cadastro-simples {
+  min-height: 260px;
+  max-height: 260px;  
+}
 /*******************************/
 .btn-plataforma {    
   height: 30px;

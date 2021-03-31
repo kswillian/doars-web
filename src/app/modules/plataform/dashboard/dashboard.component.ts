@@ -9,21 +9,11 @@ import { Utils } from 'src/app/shared/util/Utils';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  entidade: Entidade = new Entidade();
-  util: Utils = new Utils();
   
-  constructor(private entidadeService: EntidadeService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.loadEntidade();
-  }
-
-  loadEntidade() {
-    let email = this.util.getSubJwt();
-    this.entidadeService.getByEmail(email).subscribe(response => {
-      this.entidade = response;
-    });
-  }
+    
+  }  
 
 }

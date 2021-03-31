@@ -16,30 +16,39 @@ export class CardDashboardSolicitacaoSanguePorTipoSanguineoComponent implements 
   dashboardSolicitacaoDoacaoTipoSanguineo: DashboardSolicitacaoDoacaoTipoSanguineo;
   solicitacoesDoacao: Array<any> = []
 
-  @Input()
-  entidadeId: number;
+  entidade: Entidade = new Entidade();
+  util: Utils = new Utils();
 
   constructor(
     private router: Router,
+    private entidadeService: EntidadeService,
     private indicadores: IndicadoresService) { }
 
-  ngOnInit(): void {    
-    this.loadDashboard();        
+  ngOnInit(): void {
+    this.loadEntidade();
+  }
+
+  loadEntidade() {
+    let email = this.util.getSubJwt();
+    this.entidadeService.getByEmail(email).subscribe(response => {
+      this.entidade = response;
+      this.loadDashboard();
+    });
   }
 
   loadDashboard() {
-    setTimeout(() => {
-      this.indicadores.findIndicadorSolicitacaoDoacaoByTipoSanguineo(this.entidadeId).subscribe(response => {
-        this.dashboardSolicitacaoDoacaoTipoSanguineo = response;
-        this.prepareData();
-      }, erro => {
-        this.router.navigate(['/login']);
-      });
-    }, 800);    
+    if (this.entidade != null) {
+      setTimeout(() => {
+        this.indicadores.findIndicadorSolicitacaoDoacaoByTipoSanguineo(this.entidade.id).subscribe(response => {
+          this.dashboardSolicitacaoDoacaoTipoSanguineo = response;
+          this.prepareData();
+        });
+      }, 500);
+    }
   }
 
   prepareData() {
-    this.solicitacoesDoacao = this.dashboardSolicitacaoDoacaoTipoSanguineo.solicitacoesDoacao;   
+    this.solicitacoesDoacao = this.dashboardSolicitacaoDoacaoTipoSanguineo.solicitacoesDoacao;
   }
 
   refresh() {
@@ -47,8 +56,8 @@ export class CardDashboardSolicitacaoSanguePorTipoSanguineoComponent implements 
     this.prepareData();
   }
 
-  dataIsLoad(){
-    if(this.solicitacoesDoacao.length > 0){
+  dataIsLoad() {
+    if (this.solicitacoesDoacao.length > 0) {
       return true;
     }
     return false;

@@ -1,13 +1,13 @@
 export class SolicitacaoSangueForm {
 
     idEntidade: number;
-    tipoSanguineosList: number[];
+    tiposSanguineos: number[];
     descricao: string;
     distancia: number;
     
-    constructor(idEntidade: number, tipoSanguineosList: number[], descricao: string, distancia: number){
+    constructor(idEntidade: number, tiposSanguineos: number[], descricao: string, distancia: number){
         this.idEntidade = idEntidade;
-        this.tipoSanguineosList = tipoSanguineosList;
+        this.tiposSanguineos = tiposSanguineos;
         this.descricao = descricao;
         this.distancia = distancia;
     }

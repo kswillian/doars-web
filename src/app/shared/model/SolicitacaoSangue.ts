@@ -6,7 +6,7 @@ export class SolicitacaoSangue {
     id: number;
     descricao: string;
     entidade: Entidade;
-    tipoSanguineosList: TipoSanguineo[];
+    tiposSanguineos: TipoSanguineo[];
     doadoresNotificados: number;
     dataRegistro: string;
 

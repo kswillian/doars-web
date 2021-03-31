@@ -4,6 +4,7 @@ import { TipoSanguineo } from 'src/app/shared/model/TipoSanguineo';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalCadastroTipoSanguineoComponent } from '../modal-cadastro-tipo-sanguineo/modal-cadastro-tipo-sanguineo.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tipos-sanguineos',
@@ -17,6 +18,7 @@ export class TiposSanguineosComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private tipoSanguineoService: TiposSanguineosService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,8 @@ export class TiposSanguineosComponent implements OnInit {
   loadList(){
     this.tipoSanguineoService.findAll().subscribe(response => {    
         this.tiposSanguineos = response
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 

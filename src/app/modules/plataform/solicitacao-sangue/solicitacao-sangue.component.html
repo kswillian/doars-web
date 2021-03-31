@@ -63,15 +63,9 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div>            
 
-            <div class="text-center text-danger m-5" *ngIf="!entidadeIsLoad()">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden"></span>
-                </div>
-            </div>
-
-            <div class="container mt-4" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
+            <div class="container mt-4">
                 <div class="row">
                     Filtro:
                     <div class="col-11">
@@ -89,6 +83,12 @@
                         </button>
 
                     </div>
+                </div>
+            </div>
+
+            <div class="text-center text-green m-5" *ngIf="solicitacoes == null || solicitacoes.length == 0">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
                 </div>
             </div>
 

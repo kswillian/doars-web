@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { Utils } from 'src/app/shared/util/Utils';
@@ -16,6 +17,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private entidadeService: EntidadeService) { }
 
   ngOnInit(): void {    
@@ -26,6 +28,8 @@ export class SidebarComponent implements OnInit {
     let email = this.util.getSubJwt();
     this.entidadeService.getByEmail(email).subscribe( response => {
       this.entidadeNome = response.nome
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 

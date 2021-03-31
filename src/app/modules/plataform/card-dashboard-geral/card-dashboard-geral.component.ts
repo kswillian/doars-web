@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IndicadoresService } from 'src/app/service/indicadores.service';
 import { DashboardGeral } from 'src/app/shared/model/DashboardGeral';
 
@@ -15,35 +16,33 @@ export class CardDashboardGeralComponent implements OnInit {
   dataAtualizacao: string;
   dashboardGeral: DashboardGeral;
 
-  constructor(private indicadores: IndicadoresService) { }
+  constructor(
+    private router: Router,
+    private indicadores: IndicadoresService) { }
 
   ngOnInit(): void {
-    this.loadDashboard(); 
-    this.prepareData();   
+    this.loadDashboard();    
   }
 
   loadDashboard() {
-    this.indicadores.findAllGerais().subscribe(response => {  
-      this.dashboardGeral = response;                      
-    })
+    this.indicadores.findAllGerais().subscribe(response => {
+      this.dashboardGeral = response;
+      this.prepareData();
+    }, erro => {
+      this.router.navigate(['/login']);
+    });
   }
 
   prepareData() {
-    setTimeout(() => { 
-      if(this.dashboardGeral && this.dashboardGeral != null){
-        this.doadores = this.dashboardGeral.doadores;
-        this.entidades = this.dashboardGeral.entidades;
-        this.solicitacoes = this.dashboardGeral.solicitacoes;
-        this.dataAtualizacao = this.dashboardGeral.dataAtualizacao;
-      }
-    }, 200);    
+    this.doadores = this.dashboardGeral.doadores;
+    this.entidades = this.dashboardGeral.entidades;
+    this.solicitacoes = this.dashboardGeral.solicitacoes;
+    this.dataAtualizacao = this.dashboardGeral.dataAtualizacao;      
   }
 
   refresh() {
-    setTimeout(() => {
-      this.loadDashboard();
-      this.prepareData();
-    }, 300);
+    this.loadDashboard();
+    this.prepareData();
   }
 
 }

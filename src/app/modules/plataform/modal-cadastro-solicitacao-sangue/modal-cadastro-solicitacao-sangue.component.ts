@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
 import { TiposSanguineosService } from 'src/app/service/tipos-sanguineos.service';
@@ -31,6 +32,7 @@ export class ModalCadastroSolicitacaoSangueComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private tipoSanguineoService: TiposSanguineosService,
     private solicitacaoSangueService: SolicitacaoSangueService) { }
 
@@ -46,6 +48,9 @@ export class ModalCadastroSolicitacaoSangueComponent implements OnInit {
     setTimeout(() => {
       this.tipoSanguineoService.findAll().subscribe(response => {
         this.tiposSanguineos = response
+      }, erro => {
+        this.close();
+        this.router.navigate(['/login']);
       });
     }, 200);
   }

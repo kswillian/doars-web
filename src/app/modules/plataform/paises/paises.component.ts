@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pais } from 'src/app/shared/model/Pais';
 import { PaisesService } from '../../../service/paises.service';
 
@@ -12,7 +13,9 @@ export class PaisesComponent implements OnInit {
   paises: Pais[] = [];
   pais: Pais;
   
-  constructor(private paisService: PaisesService) { }
+  constructor(
+    private router: Router,
+    private paisService: PaisesService) { }
 
   ngOnInit(): void {
     this.loadList();
@@ -21,6 +24,8 @@ export class PaisesComponent implements OnInit {
   loadList(){
     this.paisService.findAll().subscribe(response => {    
         this.paises = response
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 

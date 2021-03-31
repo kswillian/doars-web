@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
@@ -24,7 +25,7 @@ export class SolicitacaoSangueComponent implements OnInit {
   searchInput: string = null;
   tiposSanguineosInput: Array<any> = [];
 
-  solicitacoes: Array<any> = [];
+  solicitacoes: Array<any>;
   tiposSanguineos: Array<any> = [];  
   tiposSanguineosDescricao: string = "A+,A-,AB+,AB-,B+,B-,O-,O+";
 
@@ -42,6 +43,7 @@ export class SolicitacaoSangueComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private entidadeService: EntidadeService,
     private tipoSanguineoService: TiposSanguineosService,
     private solicitacaoService: SolicitacaoSangueService) { }
@@ -56,12 +58,16 @@ export class SolicitacaoSangueComponent implements OnInit {
     let email = this.util.getSubJwt();
     this.entidadeService.getByEmail(email).subscribe(response => {
       this.entidade = response;
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 
   loadTiposSanguineos() {
     this.tipoSanguineoService.findAll().subscribe(response => {
       this.tiposSanguineos = response
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
   
@@ -89,18 +95,17 @@ export class SolicitacaoSangueComponent implements OnInit {
     this.loadAll();
   }
   
-  loadAll() {
-
-    this.tiposSanguineosInput = [];
-
+  loadAll() {        
     setTimeout(() => {
       this.solicitacaoService.findAll(this.entidade.id, this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
-    }, 300);
+    }, 400);
   }
 
   loadAllBySearch(){
@@ -110,6 +115,8 @@ export class SolicitacaoSangueComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     }, 300);
   }
@@ -121,6 +128,8 @@ export class SolicitacaoSangueComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     }, 300);
   }
@@ -132,6 +141,8 @@ export class SolicitacaoSangueComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     }, 300);
   }
@@ -235,6 +246,12 @@ export class SolicitacaoSangueComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  refresh() {
+    this.solicitacoes = [];
+    this.tiposSanguineosInput = [];
+    this.loadAll();
   }
 
   entidadeIsLoad(): boolean {

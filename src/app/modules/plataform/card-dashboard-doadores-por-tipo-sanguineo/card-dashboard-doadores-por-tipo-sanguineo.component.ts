@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IndicadoresService } from 'src/app/service/indicadores.service';
 import { DashboardDoadoresTipoSanguineo } from 'src/app/shared/model/DashboardDoadoresTipoSanguineo';
 
@@ -12,35 +13,34 @@ export class CardDashboardDoadoresPorTipoSanguineoComponent implements OnInit {
   dashboardDoadoresTipoSanguineo: DashboardDoadoresTipoSanguineo;
   doadoresTipoSanguineo: Array<any> = [];
 
-  constructor(private indicadores: IndicadoresService) { }
+  constructor(
+    private router: Router,
+    private indicadores: IndicadoresService) { }
 
   ngOnInit(): void {
     this.loadDashboard();
-    this.prepareData();
-    this.refresh();
   }
 
-  loadDashboard(){
-    this.indicadores.findIndicadorDoadoresByTipoSanguineo().subscribe( response => {
-      this.dashboardDoadoresTipoSanguineo = response;      
-    });
+  loadDashboard() {
+    this.indicadores.findIndicadorDoadoresByTipoSanguineo().subscribe(response => {
+      this.dashboardDoadoresTipoSanguineo = response;
+      this.prepareData();
+    }, erro => {
+      this.router.navigate(['/login']);
+    });    
   }
 
-  prepareData(){
-    if(this.dashboardDoadoresTipoSanguineo && this.dashboardDoadoresTipoSanguineo != null){
-      this.doadoresTipoSanguineo = this.dashboardDoadoresTipoSanguineo.doadoresTipoSanguineo;      
-    }    
+  prepareData() {
+    this.doadoresTipoSanguineo = this.dashboardDoadoresTipoSanguineo.doadoresTipoSanguineo;
   }
 
   refresh() {
-    setTimeout(() => {
-      this.loadDashboard();
-      this.prepareData();
-    }, 200);
+    this.loadDashboard();
+    this.prepareData();
   }
 
-  dataIsLoad(){
-    if(this.doadoresTipoSanguineo.length > 0){
+  dataIsLoad() {
+    if (this.doadoresTipoSanguineo.length > 0) {
       return true;
     }
     return false;

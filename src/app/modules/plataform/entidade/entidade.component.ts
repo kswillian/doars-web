@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { Entidade } from 'src/app/shared/model/Entidade';
 import { Utils } from 'src/app/shared/util/Utils';
@@ -13,7 +14,9 @@ export class EntidadeComponent implements OnInit {
   util: Utils = new Utils();
   entidade: Entidade;
 
-  constructor(private entidadeService: EntidadeService) { }
+  constructor(
+    private router: Router,
+    private entidadeService: EntidadeService) { }
 
   ngOnInit(): void {
     this.findEntidade();  
@@ -23,6 +26,8 @@ export class EntidadeComponent implements OnInit {
     let email = this.util.getSubJwt();
     this.entidadeService.getByEmail(email).subscribe( response => {
       this.entidade = response
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 

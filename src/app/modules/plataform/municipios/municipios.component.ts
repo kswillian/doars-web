@@ -7,6 +7,7 @@ import { Estado } from 'src/app/shared/model/Estado';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModelMunicipiosComponent } from '../model-municipios/model-municipios.component';
 import { Municipio } from 'src/app/shared/model/Municipio';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-municipios',
@@ -35,6 +36,7 @@ export class MunicipiosComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private estadoService: EstadosService,
     private municipioService: MunicipiosService) { }
 
@@ -54,6 +56,8 @@ export class MunicipiosComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     }, 500);    
   }
@@ -66,6 +70,8 @@ export class MunicipiosComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     } else {
       this.loadAll();
@@ -80,6 +86,8 @@ export class MunicipiosComponent implements OnInit {
         this.lastPage = response['totalPages'];
         this.totalPages = new Array(response['totalPages']);
         this.totalElements = new Array(response['totalElements']);
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     } else {
       this.loadAll();
@@ -161,6 +169,8 @@ export class MunicipiosComponent implements OnInit {
   getEstados() {
     this.estadoService.findAll().subscribe(response => {
       this.estados = response;
+    }, erro => {
+      this.router.navigate(['/login']);
     });
   }
 

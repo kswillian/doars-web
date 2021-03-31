@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EntidadeService } from 'src/app/service/entidade.service';
 import { IndicadoresService } from 'src/app/service/indicadores.service';
 import { DashboardSolicitacaoDoacaoTipoSanguineo } from 'src/app/shared/model/DashboardSolicitacaoDoacaoTipoSanguineo';
@@ -18,34 +19,32 @@ export class CardDashboardSolicitacaoSanguePorTipoSanguineoComponent implements 
   @Input()
   entidadeId: number;
 
-  constructor(private indicadores: IndicadoresService) { }
+  constructor(
+    private router: Router,
+    private indicadores: IndicadoresService) { }
 
   ngOnInit(): void {    
-    this.loadDashboard();
-    this.prepareData();
-    this.refresh();
+    this.loadDashboard();        
   }
-  
 
-  loadDashboard() { 
+  loadDashboard() {
     setTimeout(() => {
       this.indicadores.findIndicadorSolicitacaoDoacaoByTipoSanguineo(this.entidadeId).subscribe(response => {
         this.dashboardSolicitacaoDoacaoTipoSanguineo = response;
+        this.prepareData();
+      }, erro => {
+        this.router.navigate(['/login']);
       });
-    }, 200);      
+    }, 800);    
   }
 
   prepareData() {
-    if(this.dashboardSolicitacaoDoacaoTipoSanguineo && this.dashboardSolicitacaoDoacaoTipoSanguineo != null){
-      this.solicitacoesDoacao = this.dashboardSolicitacaoDoacaoTipoSanguineo.solicitacoesDoacao;      
-    }    
+    this.solicitacoesDoacao = this.dashboardSolicitacaoDoacaoTipoSanguineo.solicitacoesDoacao;   
   }
 
   refresh() {
-    setTimeout(() => {
-      this.loadDashboard();
-      this.prepareData();
-    }, 100);
+    this.loadDashboard();
+    this.prepareData();
   }
 
   dataIsLoad(){

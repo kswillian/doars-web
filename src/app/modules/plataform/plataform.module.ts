@@ -16,7 +16,6 @@ import { EstadosComponent } from './estados/estados.component';
 import { MunicipiosComponent } from './municipios/municipios.component';
 import { ModelMunicipiosComponent } from './model-municipios/model-municipios.component';
 import { ModalCadastroTipoSanguineoComponent } from './modal-cadastro-tipo-sanguineo/modal-cadastro-tipo-sanguineo.component';
-import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { EntidadeComponent } from './entidade/entidade.component';
 import { SolicitacaoSangueComponent } from './solicitacao-sangue/solicitacao-sangue.component';
 import { ModalSolicitacaoSangueComponent } from './modal-solicitacao-sangue/modal-solicitacao-sangue.component';
@@ -39,7 +38,6 @@ import { ModalSairComponent } from './modal-sair/modal-sair.component';
     MunicipiosComponent,
     ModelMunicipiosComponent,
     ModalCadastroTipoSanguineoComponent,
-    ToastGlobalComponent,
     EntidadeComponent,
     SolicitacaoSangueComponent,
     ModalSolicitacaoSangueComponent,

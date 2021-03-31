@@ -6110,6 +6110,14 @@ button.bg-warning:focus {
   background-color: #142c48 !important;
 }
 
+.bg-plataform-green {
+  background-color: #a2c084 !important;
+}
+
+.text-green {
+  color: #a2c084 !important;
+}
+
 .bg-danger {
   background-color: #dc3545 !important;
 }

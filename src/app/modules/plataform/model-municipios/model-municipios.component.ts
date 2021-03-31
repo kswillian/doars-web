@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MunicipiosService } from 'src/app/service/municipios.service';
 import { Municipio } from 'src/app/shared/model/Municipio';
@@ -16,6 +17,7 @@ export class ModelMunicipiosComponent  implements OnInit {
 
   constructor(
     private modal: NgbModal,
+    private router: Router,
     private municipioService: MunicipiosService) { }
 
   ngOnInit(): void {  
@@ -34,6 +36,8 @@ export class ModelMunicipiosComponent  implements OnInit {
     setTimeout(() => {
       this.municipioService.findById(this.municipioId).subscribe(response => {
         this.municipio = response;
+      }, erro => {
+        this.router.navigate(['/login']);
       });
     }, 400);    
   }

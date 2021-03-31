@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
 
 import { Doador } from 'src/app/shared/model/Doador';
@@ -14,7 +15,9 @@ export class DoadoresSolicitacaoSangueComponent implements OnInit {
   solicitacaoId: number;
   doadores: Array<Doador>;
   
-  constructor(private solicitacaoService: SolicitacaoSangueService) { }
+  constructor(
+    private router: Router,
+    private solicitacaoService: SolicitacaoSangueService) { }
 
   ngOnInit(): void {
     this.loadAllDoadores();
@@ -26,6 +29,8 @@ export class DoadoresSolicitacaoSangueComponent implements OnInit {
       setTimeout(() => {
         this.solicitacaoService.findAllDoadoresBySolicitacao(this.solicitacaoId).subscribe(response => {          
           this.doadores = response;
+        }, erro => {
+          this.router.navigate(['/login']);
         });
       }, 400);
     }

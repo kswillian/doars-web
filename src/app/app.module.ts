@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { PlataformModule } from './modules/plataform/plataform.module';
+import { WebsiteModule } from './modules/website/website.module';
 
 import { LoginComponent } from './components/login/login.component';
 import { PlataformComponent } from './components/plataform/plataform.component';
+import { WebsiteComponent } from './components/website/website.component';
+
 import { LoginService } from './components/login/login.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './interceptor.interceptor';
@@ -22,18 +24,21 @@ import { TiposSanguineosService } from './service/tipos-sanguineos.service';
 import { EntidadeService } from './service/entidade.service';
 import { SolicitacaoSangueService } from './service/solicitacao-sangue.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PlataformComponent
+    PlataformComponent,
+    WebsiteComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
     NgbModule,
-    PlataformModule
+    PlataformModule,
+    WebsiteModule
   ],
   providers: [
     LoginService,

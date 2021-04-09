@@ -1,0 +1,14 @@
+.footer {
+    background-color: #D8303D;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.footer p{
+    font-family: 'Noto Sans';
+    text-align: center;
+    font-size: 2vh;
+    color: #fff;
+}

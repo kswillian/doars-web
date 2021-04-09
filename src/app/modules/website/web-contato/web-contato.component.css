@@ -1,0 +1,55 @@
+.contato {    
+    background-image: linear-gradient(rgb(208, 220, 210), rgb(255, 255, 255));
+}
+
+.formulario {
+    min-width: 400px;
+}
+
+.box-text{
+    padding-top: 75px;
+}
+
+.box-text h2{
+    font-weight: 800;
+    font-family: 'Noto Sans';
+    text-align: left;
+}
+
+.box-text p{
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    color: #000000, 100%;
+    bleed: Pass through;
+    font-size: 3vh;
+}
+
+/** formulario seja um parceiro **/
+.box-form h2{
+    font-size: 5vh;
+    text-align: center;
+    color: #000000;
+}
+.box-form form{
+    display: grid;
+    align-items: center;
+
+}
+.box-form input{
+    border: 1px solid #d0dcd2;
+    padding: 12px;
+    background: rgb(255, 255, 255);
+    font-size: 16px;
+    width: 400px;
+    font-weight: 100;
+    outline: none;
+}
+.box-form textarea{
+    border: 1px solid #d0dcd2;
+    padding: 12px;
+    background: rgb(255, 255, 255);
+    font-size: 16px;
+    width: 400px;
+    font-weight: 100;
+    outline: none;
+}

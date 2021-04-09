@@ -6110,12 +6110,28 @@ button.bg-warning:focus {
   background-color: #142c48 !important;
 }
 
+.bg-plataform-secondary {
+  background-color: #8e8f99 !important;
+}
+
 .bg-plataform-green {
   background-color: #a2c084 !important;
 }
 
+.bg-plataform-blue {
+  background-color: #CFDBD1 !important;
+}
+
+.bg-plataform-red {
+  background-color: #bf1515 !important;
+}
+
 .text-green {
   color: #a2c084 !important;
+}
+
+.text-red {
+  color: #bf1515 !important;
 }
 
 .bg-danger {
@@ -10253,6 +10269,22 @@ body {
   box-shadow: none;
 }
 
+.btn-plataforma-lg {    
+  height: 40px;
+  border-radius: 2px;
+  font-family: Open Sans,Arial,sans-serif;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-size: 12px;     
+  box-shadow: none;
+  background-color: #fff;
+  color: #bf1515;
+}
+
+.btn-plataforma-xl {    
+  min-width: 400px;
+}
+
 .btn-datail {
   color: #767676
 }
@@ -10291,6 +10323,11 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgb(219, 48, 48);
   border: 1px solid silver;    
+}
+
+.btn-plataforma-danger:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(162, 19, 19);
 }
 
 .form-control-plataforma {

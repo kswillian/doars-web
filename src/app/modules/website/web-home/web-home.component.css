@@ -1,0 +1,151 @@
+div.topo {
+    width: 100%;
+    min-height: 100px;
+    padding: 100px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #CFDBD1;
+}
+
+div .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 143%;
+    background-color: #bf1515;
+    clip-path: polygon(62% 0%, 55% 21%, 79% 65%, 0 65%, 0 0);
+}
+
+.text-box {
+    color: #fff;
+}
+
+.content .text-box {
+    position: relative;
+    max-width: 430px;
+    margin-right: 20px;
+}
+
+.content .text-box h4 {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+    font-weight: 700;
+    font-family: 'Noto Sans';
+}
+
+.content .text-box p {
+    color: #fff;
+    font-size: 12px;
+}
+
+.content .img-box img {
+    width: 400px;
+    position: relative;
+}
+
+.differences {
+    background-color: #fff;
+    width: 100%;
+}
+
+.differences h3, .perguntas h3 {
+    font-size: x-large;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 4vh;
+    margin-top: 4vh;
+    color: #BF1515;
+}
+
+.diff-img img {
+    width: 75px;
+}
+
+.diff-title {
+    text-align: center;
+    font-weight: 300;
+    font-family: 'Noto Sans';
+}
+
+.flex-grid-thirds {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-grid-thirds .col {
+    width: 32%;
+}
+
+@media (max-width: 400px) {
+    .flex-grid, .flex-grid-thirds {
+        display: block;
+    }
+    .col {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+}
+
+.perguntas {
+    background-color: #fff;
+    padding: 25px;
+}
+
+.collapse-list {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.collapse-open {
+    display: none;
+}
+
+.collapse-painel {
+    visibility: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .1s, visibility .3s, opacity .3s;
+}
+
+.collapse-open:checked~.collapse-painel {
+    max-height: 100%;
+    opacity: 100;
+    visibility: visible
+}
+
+.collapse-list li {
+    margin-bottom: 0;
+}
+
+.collapse-list .collapse-btn {
+    border-top: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: block;
+    padding: 15px 40px;
+    margin-bottom: 0;
+    color: #4285f4;
+    font-weight: normal;
+    transition: background-color .2s ease;
+}
+
+.collapse-list .collapse-btn:hover {
+    background: #eee;
+}
+
+.collapse-open~.collapse-btn:before {
+    content: "↓";
+    float: right;
+}
+
+.collapse-open:checked~.collapse-btn:before {
+    content: "↑";
+}
+
+.collapse-list .collapse-inner {
+    padding: 10px
+}

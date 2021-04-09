@@ -1,0 +1,50 @@
+header {
+    z-index: 255;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    position: relative;
+    max-width: 150px;
+}
+
+nav {
+    position: relative;
+    display: flex;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav li a {
+    display: inline-block;
+    color: #8f1717;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav li a:hover {
+    color: #fff;
+    background-color: #bf1515;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.logo {
+    width: 42px;
+}
+
+.user-icon {
+    width: 10px;
+}

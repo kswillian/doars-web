@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  //apiURLBase: 'http://localhost:8080/api'
   apiURLBase: 'https://doars-api.herokuapp.com/api'
 };
 

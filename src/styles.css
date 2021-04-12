@@ -10281,8 +10281,12 @@ body {
   color: #bf1515;
 }
 
-.btn-plataforma-sl {    
+.btn-plataforma-sl {
+  font-family: Open Sans,Arial,sans-serif;    
+  border-radius: 2px;
+  padding: 5px 10px;
   min-width: 300px;
+  height: 40px;
 }
 
 .btn-plataforma-xl {    
@@ -10325,7 +10329,7 @@ body {
 
 .btn-plataforma-danger {
   color: rgb(255, 255, 255);
-  background-color: rgb(219, 48, 48);
+  background-color: #bf1515;
   border: 1px solid silver;    
 }
 

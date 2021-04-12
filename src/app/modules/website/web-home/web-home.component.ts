@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Utils } from 'src/app/shared/util/Utils';
 import { WebModalDoadorComponent } from '../web-modal-doador/web-modal-doador.component';
 
 @Component({
@@ -9,9 +10,12 @@ import { WebModalDoadorComponent } from '../web-modal-doador/web-modal-doador.co
 })
 export class WebHomeComponent implements OnInit {
 
+  util: Utils = new Utils();
+
   constructor(private modal: NgbModal) { }
 
   ngOnInit(): void {
+    this.util.storage.removeAccessTokenToLocalStorage();
   }
 
   openModalRegisterDoador(){

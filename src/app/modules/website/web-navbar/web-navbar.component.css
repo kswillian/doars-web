@@ -1,3 +1,4 @@
+
 header {
     z-index: 255;
     position: absolute;
@@ -15,16 +16,16 @@ header .logo {
     max-width: 150px;
 }
 
-nav {
+.nav {
     position: relative;
     display: flex;
 }
 
-nav li {
+.nav li {
     list-style-type: none;
 }
 
-nav li a {
+.nav li a {
     display: inline-block;
     color: #8f1717;
     font-weight: 500;
@@ -34,11 +35,14 @@ nav li a {
     border-radius: 5px;
 }
 
-nav li a:hover {
+.nav li a:hover {
     color: #fff;
     background-color: #bf1515;
     padding: 10px;
     border-radius: 5px;
+}
+.bg-teste{
+    background-color: transparent;
 }
 
 .logo {

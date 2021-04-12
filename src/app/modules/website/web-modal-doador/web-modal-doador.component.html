@@ -1,0 +1,82 @@
+<div class="modal-content">
+
+    <div class="modal-header m-2">
+        <h5 class="modal-title">Seja um doador</h5>
+        <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="loginWrapper">
+
+            <div class="content__wrapper">
+
+                <form class="pure-form">
+
+                    <label>Nome <span class="text-danger"> *</span> </label>
+                    <input type="text" name="nome"  [(ngModel)]="nome">
+                    <label>Email <span class="text-danger"> *</span> </label>
+                    <input type="email" name="email" [(ngModel)]="email">
+
+                    <label>Gênero <span class="text-danger"> *</span> </label>
+                    <select class="form-control form-control-plataforma custom-select" name="genero" [(ngModel)]="sexo">
+                        <option disable> Selecione o gênero </option>
+                        <option *ngFor="let genero of generos" [value]="genero">
+                            {{genero}}
+                        </option>
+                    </select>
+
+                    <label>Estado <span class="text-danger"> *</span> </label>
+                    <select class="form-control form-control-plataforma custom-select"
+                        (change)="loadMunicipiosByEstado($event.target.value)" name="estado" [(ngModel)]="estadoId">
+                        <option *ngFor="let estado of estados" [value]="estado.id">({{estado.sigla}}) {{estado.nome}}
+                        </option>
+                    </select>
+
+                    <label>Municipio <span class="text-danger"> *</span> </label>
+                    <select class="form-control form-control-plataforma custom-select" name="municipio"
+                        [(ngModel)]="municipioId">
+                        <option value="" [selected]=true>Select project</option>
+                        <option *ngFor="let municipio of municipios" [value]="municipio.id">
+                            {{municipio.nome}}
+                        </option>
+                    </select>
+
+                    <label>Logradouro</label>
+                    <input type="text" name="endereco" placeholder="Rua" [(ngModel)]="logradouro">
+
+                    <label>N°</label>
+                    <input type="text" name="numero" placeholder="Numero" [(ngModel)]="numero">
+
+                    <label>Tipos Sanguineo <span class="text-danger"> *</span> </label>
+                    <select class="form-control form-control-plataforma custom-select" name="tipoSanguineo"
+                        [(ngModel)]="tipoSanguineoId">
+                        <option disable> Selecione o seu tipo sanguineo </option>
+                        <option *ngFor="let tipoSanguineo of tiposSanguineos" [value]="tipoSanguineo.id">
+                            {{tipoSanguineo.descricao}}
+                        </option>
+                    </select>
+
+                    <div *ngIf="!isValid">
+                        <small id="emailHelp" class="form-text text-danger">Favor preencher os campos
+                            obrigatorios</small>
+                    </div>
+
+                    <div *ngIf="!success">
+                        <div *ngFor="let message of messagesFormated">
+                            <small id="emailHelp" class="form-text text-danger">{{message}}</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-plataforma-sl btn-plataforma-danger mt-4 mb-4"
+                        (click)="register()">CADASTRAR</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

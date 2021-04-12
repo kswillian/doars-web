@@ -21,9 +21,13 @@ export class MunicipiosService {
     return this.httpClient.get(this.URL_API + '?page=' + page + '&size=' + size);
   }
 
+  findListByEstado(id: number): Observable<any>{
+    return this.httpClient.get(this.URL_API + '/estados/id/' + id);
+  }
+
   findAllByEstado(sigla: string, page, size){
     return this.httpClient.get(this.URL_API + '/estados/' + sigla + '?page=' + page + '&size=' + size);
-  }
+  }  
 
   findById(municipioId: number) {
     return this.httpClient.get<Municipio>(this.URL_API + '/' + municipioId);

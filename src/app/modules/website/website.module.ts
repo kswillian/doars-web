@@ -8,6 +8,7 @@ import { WebHomeComponent } from './web-home/web-home.component';
 import { WebFooterComponent } from './web-footer/web-footer.component';
 import { WebSobreComponent } from './web-sobre/web-sobre.component';
 import { WebContatoComponent } from './web-contato/web-contato.component';
+import { WebModalDoadorComponent } from './web-modal-doador/web-modal-doador.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { WebContatoComponent } from './web-contato/web-contato.component';
     WebHomeComponent,    
     WebSobreComponent,
     WebContatoComponent,
-    WebFooterComponent
+    WebFooterComponent,
+    WebModalDoadorComponent
   ],
   imports: [
     CommonModule,

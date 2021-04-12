@@ -1,23 +1,19 @@
 <!--banner -->
 <div class="container-fluid topo">
 
-    <div class="wave container-fluid"></div>
+ <div class="content container-fluid">
 
-    <div class="content container-fluid">
-
-        <div class="row mt-4">
+        <div class="row">
             <div class="col-sm">
                 <div class="text-box">
                     <h2>Conectamos bancos de sangue e doadores voluntários</h2>
                     <p> A plataforma DOARS notifica os doados cadastrado via email quando uma entidade de hemoterapia
                         estiver precisando de sangue.</p>
-                    <button class="btn btn-plataforma-lg m-1">seja um doador <i
+                    <button class="btn btn-plataforma-lg m-1" (click)="openModalRegisterDoador()">seja um doador <i
                             class="fas fa-chevron-circle-right"></i></button>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="img-box"><img src="../../../../assets/images/blood.png"> </div>
-            </div>
+            </div>            
+            
         </div>
 
     </div>

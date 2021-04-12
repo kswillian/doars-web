@@ -10281,6 +10281,10 @@ body {
   color: #bf1515;
 }
 
+.btn-plataforma-sl {    
+  min-width: 300px;
+}
+
 .btn-plataforma-xl {    
   min-width: 400px;
 }

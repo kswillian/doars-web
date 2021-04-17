@@ -1,0 +1,28 @@
+<form class="col-auto p-2">
+    <div class="form-group">
+
+        <div class="mb-2">
+            <label>Nome <span class="text-danger"> *</span> </label>
+            <input type="text" name="nome" [(ngModel)]="nome" class="form-control">
+        </div>
+
+        <div class="mb-2">
+            <label>Email <span class="text-danger"> *</span> </label>
+            <input type="email" name="email" [(ngModel)]="email" class="form-control">
+        </div>
+
+        <div class="mb-2">
+            <label>Mensagem <span class="text-danger"> *</span> </label>
+            <textarea class="form-control" name="mensagem" [(ngModel)]="mensagem" rows="3"></textarea>
+        </div>
+
+        <div *ngIf="!success" class="text-center">
+            <small id="emailHelp" class="form-text text-danger">{{message}}</small>
+        </div>
+
+        <div class="mb-2 mt-4">
+            <button class="btn btn-plataforma-xl btn-plataforma-danger" (click)="sendEmail()">ENVIAR</button>                        
+        </div>
+
+    </div>
+</form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Utils } from 'src/app/shared/util/Utils';
+import { WebModalContatoEmailComponent } from '../web-modal-contato-email/web-modal-contato-email.component';
 import { WebModalDoadorComponent } from '../web-modal-doador/web-modal-doador.component';
 
 @Component({
@@ -20,6 +21,10 @@ export class WebHomeComponent implements OnInit {
 
   openModalRegisterDoador(){
     this.modal.open(WebModalDoadorComponent);
+  }
+
+  openModalRegisterDuvida(){
+    this.modal.open(WebModalContatoEmailComponent);
   }
 
 }

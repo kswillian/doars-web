@@ -9,6 +9,8 @@ import { WebFooterComponent } from './web-footer/web-footer.component';
 import { WebSobreComponent } from './web-sobre/web-sobre.component';
 import { WebContatoComponent } from './web-contato/web-contato.component';
 import { WebModalDoadorComponent } from './web-modal-doador/web-modal-doador.component';
+import { WebModalContatoEmailComponent } from './web-modal-contato-email/web-modal-contato-email.component';
+import { WebFormularioEmailComponent } from './web-formulario-email/web-formulario-email.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { WebModalDoadorComponent } from './web-modal-doador/web-modal-doador.com
     WebSobreComponent,
     WebContatoComponent,
     WebFooterComponent,
-    WebModalDoadorComponent
+    WebModalDoadorComponent,
+    WebModalContatoEmailComponent,
+    WebFormularioEmailComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +34,9 @@ import { WebModalDoadorComponent } from './web-modal-doador/web-modal-doador.com
     WebHomeComponent,
     WebSobreComponent,
     WebContatoComponent,
+    WebModalDoadorComponent,
+    WebModalContatoEmailComponent,
+    WebFormularioEmailComponent,
     WebFooterComponent
   ]
 })

@@ -20,6 +20,10 @@
             <small id="emailHelp" class="form-text text-danger">{{message}}</small>
         </div>
 
+        <div *ngIf="success" class="text-center">
+            <small id="emailHelp" class="form-text text-success">{{message}}</small>
+        </div>
+
         <div class="mb-2 mt-4">
             <button class="btn btn-plataforma-xl btn-plataforma-danger" (click)="sendEmail()">ENVIAR</button>                        
         </div>

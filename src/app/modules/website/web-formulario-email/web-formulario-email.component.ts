@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmailService } from 'src/app/service/email.service';
 import { EmailForm } from 'src/app/shared/model/form/EmailForm';
 
@@ -18,7 +19,9 @@ export class WebFormularioEmailComponent implements OnInit {
   message = '';
   success: boolean = false;  
 
-  constructor(private emailService: EmailService) { }
+  constructor(
+    private modal: NgbModal,
+    private emailService: EmailService) { }
 
   ngOnInit(): void {
   }
@@ -57,5 +60,9 @@ export class WebFormularioEmailComponent implements OnInit {
     this.email = '';
     this.mensagem = '';
   }
+
+  close() {
+    this.modal.dismissAll();
+  }  
 
 }

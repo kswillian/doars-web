@@ -19,6 +19,7 @@ import { WebSobreComponent } from './modules/website/web-sobre/web-sobre.compone
 import { WebContatoComponent } from './modules/website/web-contato/web-contato.component';
 
 const routes: Routes = [
+  /*
   {
     path: '', component: WebsiteComponent, children: [
       { path: 'home', component: WebHomeComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'contato', component: WebContatoComponent }
     ]
   },
-  { path: 'login', component: LoginComponent },
+  */
+  { path: '', component: LoginComponent },
   {
     path: 'plataforma', component: PlataformComponent, canActivate: [AuthGuard], children: [
       { path: 'dashboard', component: DashboardComponent },

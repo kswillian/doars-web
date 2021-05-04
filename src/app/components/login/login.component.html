@@ -1,3 +1,4 @@
+<!--
 <div class="main">
     <section class="loginWrapper" *ngIf="!selected">
 
@@ -57,23 +58,24 @@
     
     </section>
 </div>
+-->
 
-<!--
-<div class="container p-5 text-center" *ngIf="!selected">
+
+<div class="container-fluid mt-5 p-5 text-center" *ngIf="!selected">
+
     <main class="form-signin">
         <form #loginForm="ngForm">
 
             <h1 class="h3 mb-3 fw-normal">Login</h1>
 
-            <input [(ngModel)]="email" name="email" type="email" class="form-control" placeholder="Email" required
+            <input [(ngModel)]="email" name="email" type="email" class="" placeholder="Email" required
                 autofocus>
-            <label class="visually-hidden"></label>
-            <input [(ngModel)]="senha" name="senha" type="password" class="form-control" placeholder="Senha" required>
-            <div class="checkbox mb-3">
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="onSubmit()">Sign in</button>
+            <label class="visually-hidden"></label><br/>
+            <input [(ngModel)]="senha" name="senha" type="password" class="" placeholder="Senha" required>
+            <br/>
+            <button class="btn" style="width: 300px; background: rgb(145, 143, 142);" type="submit" (click)="onSubmit()">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
         </form>
     </main>
+
 </div>
--->

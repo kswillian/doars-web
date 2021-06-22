@@ -23,6 +23,7 @@ import { MunicipiosService } from './service/municipios.service';
 import { TiposSanguineosService } from './service/tipos-sanguineos.service';
 import { EntidadeService } from './service/entidade.service';
 import { SolicitacaoSangueService } from './service/solicitacao-sangue.service';
+import { LiberacaoComponent } from './components/liberacao/liberacao.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SolicitacaoSangueService } from './service/solicitacao-sangue.service';
     AppComponent,
     LoginComponent,
     PlataformComponent,
-    WebsiteComponent,    
+    WebsiteComponent,
+    LiberacaoComponent,    
   ],
   imports: [
     BrowserModule,

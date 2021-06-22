@@ -17,18 +17,18 @@ import { SolicitacaoSangueComponent } from './modules/plataform/solicitacao-sang
 import { WebHomeComponent } from './modules/website/web-home/web-home.component';
 import { WebSobreComponent } from './modules/website/web-sobre/web-sobre.component';
 import { WebContatoComponent } from './modules/website/web-contato/web-contato.component';
+import { LiberacaoComponent } from './components/liberacao/liberacao.component';
 
 const routes: Routes = [
-  /*
   {
     path: '', component: WebsiteComponent, children: [
       { path: 'home', component: WebHomeComponent },
       { path: 'sobre', component: WebSobreComponent },
-      { path: 'contato', component: WebContatoComponent }
+      { path: 'contato', component: WebContatoComponent },
+      { path: 'login', component: LoginComponent }
     ]
   },
-  */
-  { path: '', component: LoginComponent },
+  { path: 'liberacoes', component: LiberacaoComponent },
   {
     path: 'plataforma', component: PlataformComponent, canActivate: [AuthGuard], children: [
       { path: 'dashboard', component: DashboardComponent },

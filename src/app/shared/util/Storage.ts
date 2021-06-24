@@ -1,4 +1,4 @@
-import { LoginDTO } from '../model/LoginDTO';
+import { LoginDTO } from '../model/dto/LoginDTO';
 
 export class Storage {
 

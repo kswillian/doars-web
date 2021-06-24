@@ -24,11 +24,11 @@ const routes: Routes = [
     path: '', component: WebsiteComponent, children: [
       { path: 'home', component: WebHomeComponent },
       { path: 'sobre', component: WebSobreComponent },
-      { path: 'contato', component: WebContatoComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'contato', component: WebContatoComponent }      
     ]
   },
   { path: 'liberacoes', component: LiberacaoComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'plataforma', component: PlataformComponent, canActivate: [AuthGuard], children: [
       { path: 'dashboard', component: DashboardComponent },

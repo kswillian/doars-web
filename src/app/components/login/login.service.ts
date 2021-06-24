@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { LoginDTO } from 'src/app/shared/model/LoginDTO';
-import { LoginForm } from 'src/app/shared/model/LoginForm';
+import { LoginDTO } from 'src/app/shared/model/dto/LoginDTO';
+import { LoginForm } from 'src/app/shared/model/form/LoginForm';
 import { environment } from '../../../environments/environment';
 import { Storage } from 'src/app/shared/util/Storage';
 import { JwtHelperService } from '@auth0/angular-jwt';

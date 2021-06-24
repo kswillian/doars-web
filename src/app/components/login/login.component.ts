@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginForm } from 'src/app/shared/model/LoginForm';
-import { LoginDTO } from 'src/app/shared/model/LoginDTO';
+import { LoginForm } from 'src/app/shared/model/form/LoginForm';
+import { LoginDTO } from 'src/app/shared/model/dto/LoginDTO';
 import { Storage } from 'src/app/shared/util/Storage';
 
 import { LoginService } from './login.service';

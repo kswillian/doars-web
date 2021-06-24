@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from 'src/app/shared/util/Storage';
-import { LoginDTO } from 'src/app/shared/model/LoginDTO';
+import { LoginDTO } from 'src/app/shared/model/dto/LoginDTO';
 
 import {
   HttpRequest,

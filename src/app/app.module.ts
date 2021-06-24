@@ -22,9 +22,9 @@ import { EstadosService } from './service/estados.service';
 import { MunicipiosService } from './service/municipios.service';
 import { TiposSanguineosService } from './service/tipos-sanguineos.service';
 import { EntidadeService } from './service/entidade.service';
+import { LiberacaoService } from './components/liberacao/liberacao.service';
 import { SolicitacaoSangueService } from './service/solicitacao-sangue.service';
 import { LiberacaoComponent } from './components/liberacao/liberacao.component';
-
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { LiberacaoComponent } from './components/liberacao/liberacao.component';
     TiposSanguineosService,
     EntidadeService,
     SolicitacaoSangueService,
+    LiberacaoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorInterceptor,

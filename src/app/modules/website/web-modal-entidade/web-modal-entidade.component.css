@@ -1,0 +1,88 @@
+.main {    
+    background: #CFDBD1;
+    overflow: auto;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-weight: light;
+    font-weight: 100;
+}
+
+.content__wrapper {
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 24px;
+    background-color: #fff;
+}
+
+form label {
+    width: 300px;
+    text-align: left;
+}
+
+form input{
+    border: none;
+    padding: 12px;
+    background: rgb(216, 216, 216);
+    font-size: 14px;
+    margin: 12px 0px;
+    width: 300px;
+    font-weight: 100;
+    outline: none;
+    color: #bf1515;
+}
+
+form input:first-child {
+    margin-top: 8px;
+}
+
+form input:last-child {
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+form input :placeholder {
+    color: #bf1515;
+}
+
+form select {
+    color: #bf1515;
+}
+
+form select {
+    border: none;
+    padding: 12px;
+    background: rgb(216, 216, 216);
+    font-size: 14px;
+    margin: 12px 0px;
+    width: 300px;
+    font-weight: 100;
+    outline: none;
+    height: auto;
+}
+
+form [type="submit"]:focus, form [type="submit"]:hover {
+    background: #bf1515;
+}
+
+form [type="submit"] {
+    background: #bf1515;
+    color: #fff;
+    padding: 24px;
+    width: 100%;
+    cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(97, 97, 97);
+}
+
+:-moz-placeholder {
+    color: rgb(97, 97, 97);
+}
+
+::-moz-placeholder {
+    color: rgb(97, 97, 97);
+}
+
+:-ms-input-placeholder {
+    color: rgb(97, 97, 97);
+}

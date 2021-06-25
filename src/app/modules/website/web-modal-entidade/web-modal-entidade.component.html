@@ -1,0 +1,105 @@
+<div class="modal-content">
+
+    <div class="modal-header m-2">
+        <h5 class="modal-title">Seja uma entidade apoiadora</h5>
+        <a class="btn close" (click)="close()"><span aria-hidden="true">&times;</span></a>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="">
+
+            <div class="content__wrapper">
+
+                <form class="pure-form">                    
+
+                    <div class="row">
+                        
+                        <div class="col-6">                                                        
+
+                            <label>Nome <span class="text-danger"> *</span> </label>
+                            <input type="text" name="nome" [(ngModel)]="nome">
+
+                            <label>CNPJ <span class="text-danger"> *</span> </label>
+                            <input type="text" name="cnpj" [(ngModel)]="cnpj">
+
+                            <label>Email <span class="text-danger"> *</span> </label>
+                            <input type="email" name="email" [(ngModel)]="email">
+
+                            <label>Celular <span class="text-danger"> *</span> </label>
+                            <input type="text" name="celular" [(ngModel)]="celular">
+
+                            <label>Telefone <span class="text-danger"> *</span> </label>
+                            <input type="text" name="telefone" [(ngModel)]="telefone">    
+                            
+                        </div>
+                        
+                        <div class="col-6">
+
+                            <label>Tipo de Entidade <span class="text-danger"> *</span> </label>
+                            <select class="form-control form-control-plataforma custom-select" name="tipoEntidade"
+                                [(ngModel)]="tipoEntidade">
+                                <option disable> Selecione o tipo de entidade </option>
+                                <option *ngFor="let tipoEntidade of tipoEntidades" [value]="tipoEntidade">
+                                    {{tipoEntidade}}
+                                </option>
+                            </select>
+
+                            <label>Estado <span class="text-danger"> *</span> </label>
+                            <select class="form-control form-control-plataforma custom-select"
+                                (change)="loadMunicipiosByEstado($event.target.value)" name="estado"
+                                [(ngModel)]="idEstado">
+                                <option *ngFor="let estado of estados" [value]="estado.id">({{estado.sigla}})
+                                    {{estado.nome}}
+                                </option>
+                            </select>
+
+                            <label>Municipio <span class="text-danger"> *</span> </label>
+                            <select class="form-control form-control-plataforma custom-select" name="municipio"
+                                [(ngModel)]="idMunicipio">
+                                <option value="" [selected]=true>Select project</option>
+                                <option *ngFor="let municipio of municipios" [value]="municipio.id">
+                                    {{municipio.nome}}
+                                </option>
+                            </select>
+
+                            <label>Logradouro</label>
+                            <input type="text" name="endereco" [(ngModel)]="logradouro">
+
+                            <label>N°</label>
+                            <input type="text" name="numero" [(ngModel)]="numero">
+
+                        </div>
+
+                        <div class="col-6 mt-2">
+
+                            <label>Senha <span class="text-danger"> *</span> </label>
+                            <input type="password" name="senha" [(ngModel)]="senha">
+
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="!isValid">
+                        <small id="emailHelp" class="form-text text-danger">Favor preencher os campos
+                            obrigatorios</small>
+                    </div>
+
+                    <div *ngIf="!success">
+                        <div *ngFor="let message of messagesFormated">
+                            <small id="emailHelp" class="form-text text-danger">{{message}}</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-plataforma btn-plataforma-sl btn-plataforma-danger m-3"
+                        (click)="register()">CADASTRAR</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

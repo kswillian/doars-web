@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   email: string;
   senha: string;
   success: boolean;
+  message: string = '';
 
   storage: Storage = new Storage();
 
@@ -102,6 +103,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
       },
       error => {
+
+        this.message = error.error.mensagem;
         this.storage.removeAccessTokenToLocalStorage();
       }
     );

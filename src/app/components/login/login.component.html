@@ -64,19 +64,24 @@
 <div class="container-fluid mt-5 p-5 text-center" *ngIf="!selected">
 
     <main class="form-signin">
+
         <form #loginForm="ngForm">
 
             <h1 class="h3 mb-3 fw-normal">Login</h1>
-
-            <input [(ngModel)]="email" name="email" type="email" class="" placeholder="Email" required
-                autofocus>
-            <label class="visually-hidden"></label><br/>
+            <input [(ngModel)]="email" name="email" type="email" class="" placeholder="Email" required autofocus>
+            
+            <br/>
             <input [(ngModel)]="senha" name="senha" type="password" class="" placeholder="Senha" required>
+
             <br/>
             <button class="btn" style="width: 300px;" type="submit" (click)="onSubmit()">Sign in</button>
+
+            <br/>
+            <p class="mt-5 text-danger">{{message}}</p>
             <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
                         
         </form>
+
     </main>
 
 </div>

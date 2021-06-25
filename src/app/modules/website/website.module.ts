@@ -11,6 +11,7 @@ import { WebContatoComponent } from './web-contato/web-contato.component';
 import { WebModalDoadorComponent } from './web-modal-doador/web-modal-doador.component';
 import { WebModalContatoEmailComponent } from './web-modal-contato-email/web-modal-contato-email.component';
 import { WebFormularioEmailComponent } from './web-formulario-email/web-formulario-email.component';
+import { WebModalEntidadeComponent } from './web-modal-entidade/web-modal-entidade.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { WebFormularioEmailComponent } from './web-formulario-email/web-formular
     WebFooterComponent,
     WebModalDoadorComponent,
     WebModalContatoEmailComponent,
-    WebFormularioEmailComponent
+    WebFormularioEmailComponent,
+    WebModalEntidadeComponent
   ],
   imports: [
     CommonModule,

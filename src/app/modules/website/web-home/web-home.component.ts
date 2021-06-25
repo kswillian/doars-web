@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Utils } from 'src/app/shared/util/Utils';
 import { WebModalContatoEmailComponent } from '../web-modal-contato-email/web-modal-contato-email.component';
 import { WebModalDoadorComponent } from '../web-modal-doador/web-modal-doador.component';
+import { WebModalEntidadeComponent } from '../web-modal-entidade/web-modal-entidade.component';
 
 @Component({
   selector: 'app-web-home',
@@ -25,6 +26,10 @@ export class WebHomeComponent implements OnInit {
 
   openModalRegisterDuvida(){
     this.modal.open(WebModalContatoEmailComponent);
+  }
+
+  openModalRegisterEntidade(){
+    this.modal.open(WebModalEntidadeComponent, { size: 'lg'});
   }
 
 }

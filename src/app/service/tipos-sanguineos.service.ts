@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { TipoSanguineo } from '../shared/model/TipoSanguineo';
-import { TipoSanguineoForm } from '../shared/model/TipoSanguineoForm';
+import { TipoSanguineoForm } from '../shared/model/form/TipoSanguineoForm';
 
 @Injectable({
   providedIn: 'root'

@@ -66,7 +66,7 @@
             </div>            
 
             <div class="container mt-4">
-                <div class="row">
+                <div class="row" *ngIf="tiposSanguineosInput.length > 0">
                     Filtro:
                     <div class="col-11">
 
@@ -77,28 +77,28 @@
                         </button>
 
                         <button class="btn badge btn-sm bg-light text-dark" type="button"
-                            *ngIf="tiposSanguineosInput.length == tiposSanguineos.length"
+                            *ngIf="tiposSanguineosInput.length > 0"
                             (click)="clearTiposSanguineosInput()">Limpar Filtro
                             <a class="fs-6 ml-1"><span aria-hidden="true">&times;</span></a>
                         </button>
 
                     </div>
                 </div>
-            </div>
+            </div>            
 
-            <div class="text-center text-red m-5" *ngIf="solicitacoes == null || solicitacoes.length == 0">
+            <div class="text-center text-red mt-5 m-2" *ngIf="solicitacoes == null">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden"></span>
                 </div>
             </div>
 
-            <div class="text-center m-5" *ngIf="entidadeIsLoad() && solicitacoes.length == 0">
+            <div class="text-center m-5" *ngIf="solicitacoes == null || solicitacoes.length == 0">
                 <div>
                     Ainda não há cadastros de solicitações por aqui
                 </div>
             </div>
 
-            <div class="card-body" *ngIf="entidadeIsLoad() && solicitacoes.length > 0">
+            <div class="card-body" *ngIf="solicitacoes != null && solicitacoes.length > 0">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

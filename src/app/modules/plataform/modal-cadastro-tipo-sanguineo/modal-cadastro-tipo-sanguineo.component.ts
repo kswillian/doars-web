@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { TiposSanguineosService } from 'src/app/service/tipos-sanguineos.service';
-import { TipoSanguineoForm } from 'src/app/shared/model/TipoSanguineoForm';
+import { TipoSanguineoForm } from 'src/app/shared/model/form/TipoSanguineoForm';
 import { Utils } from 'src/app/shared/util/Utils';
 
 @Component({

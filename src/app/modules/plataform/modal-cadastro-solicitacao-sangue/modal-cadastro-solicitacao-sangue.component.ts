@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitacaoSangueService } from 'src/app/service/solicitacao-sangue.service';
 import { TiposSanguineosService } from 'src/app/service/tipos-sanguineos.service';
-import { SolicitacaoSangueForm } from 'src/app/shared/model/SolicitacaoSangueForm';
+import { SolicitacaoSangueForm } from 'src/app/shared/model/form/SolicitacaoSangueForm';
 import { TipoSanguineo } from 'src/app/shared/model/TipoSanguineo';
 import { Utils } from 'src/app/shared/util/Utils';
 

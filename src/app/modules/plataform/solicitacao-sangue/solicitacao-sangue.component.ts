@@ -95,7 +95,10 @@ export class SolicitacaoSangueComponent implements OnInit {
     this.loadAll();
   }
   
-  loadAll() {        
+  loadAll() { 
+    
+    this.solicitacoes = null;
+
     setTimeout(() => {
       this.solicitacaoService.findAll(this.entidade.id, this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
@@ -109,6 +112,7 @@ export class SolicitacaoSangueComponent implements OnInit {
   }
 
   loadAllBySearch(){
+    this.solicitacoes = null;
     setTimeout(() => {
       this.solicitacaoService.findAllBySearch(this.entidade.id, this.searchInput, this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
@@ -121,7 +125,8 @@ export class SolicitacaoSangueComponent implements OnInit {
     }, 300);
   }
 
-  loadAllByTiposSanguineos(){    
+  loadAllByTiposSanguineos(){ 
+    this.solicitacoes = null;   
     setTimeout(() => {
       this.solicitacaoService.findAllByTiposSanguineos(this.entidade.id, this.prepareListId(), this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
@@ -134,7 +139,8 @@ export class SolicitacaoSangueComponent implements OnInit {
     }, 300);
   }
 
-  loadAllByTiposSanguineosAndSearch(){    
+  loadAllByTiposSanguineosAndSearch(){   
+    this.solicitacoes = null;
     setTimeout(() => {
       this.solicitacaoService.findAllByTiposSanguineosAndSearch(this.entidade.id, this.searchInput, this.prepareListId(), this.page, this.size).subscribe(response => {
         this.solicitacoes = response['content'];
@@ -157,6 +163,8 @@ export class SolicitacaoSangueComponent implements OnInit {
 
   search() {    
 
+    this.solicitacoes = null;
+    
     if(this.tiposSanguineosInput.length > 0 && this.searchInput != null && this.searchInput != ""){      
       this.loadAllByTiposSanguineosAndSearch();
     }else if(this.tiposSanguineosInput.length > 0){

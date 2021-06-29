@@ -22,7 +22,7 @@ export class WebModalEntidadeComponent implements OnInit {
   estados: Array<any> = [];
   municipios: Array<any> = [];
 
-  isValid: boolean = false;
+  isValid: boolean = true;
   success: boolean = true;
   errorMessage: string;
   fieldMessage: any[] = [];
